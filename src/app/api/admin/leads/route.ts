@@ -9,6 +9,14 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const leads = await getAllLeads();
-  return NextResponse.json({ leads });
+  try {
+    const leads = await getAllLeads();
+    return NextResponse.json({ leads });
+  } catch (err) {
+    console.error('[api/admin/leads]', err);
+    return NextResponse.json(
+      { error: 'Could not read lead storage. If this persists on Vercel, check deployment logs.' },
+      { status: 503 }
+    );
+  }
 }

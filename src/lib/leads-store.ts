@@ -1,5 +1,11 @@
 import { promises as fs } from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
+
+// Vercel serverless: repo dir is read-only; only tmp is writable (fixes 500 on /api/admin/leads).
+// Note: multiple regions/instances each have their own tmp — use a DB/KV for shared storage later.
+const DATA_DIR =
+  process.env.VERCEL === '1' ? os.tmpdir() : path.join(process.cwd(), 'data');
 
 export type LeadKind = 'contact' | 'chatbot';
 
@@ -31,7 +37,6 @@ interface LeadsFileShape {
   leads: LeadEntry[];
 }
 
-const DATA_DIR = path.join(process.cwd(), 'data');
 const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
 
 async function ensureDataFile() {
