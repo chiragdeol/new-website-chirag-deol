@@ -135,10 +135,8 @@ export default function Chatbot() {
       {/* Notification bubble */}
       {showBubble && !isOpen && (
         <div
-          className="fixed z-50"
+          className="fixed bottom-[7rem] right-3 z-50 sm:bottom-[7.5rem] sm:right-8"
           style={{
-            bottom: '7.5rem',
-            right: '2rem',
             background: '#111822',
             color: '#fff',
             borderRadius: '1rem 1rem 0.25rem 1rem',
@@ -179,12 +177,9 @@ export default function Chatbot() {
       {/* Chat Window */}
       {isOpen && (
         <div
-          className="fixed z-50"
+          className="fixed bottom-[6.75rem] right-3 z-50 max-h-[min(520px,calc(100dvh-8rem))] w-[min(calc(100vw-1.5rem),380px)] sm:bottom-[7rem] sm:right-8"
           style={{
-            bottom: '7rem',
-            right: '2rem',
-            width: 'clamp(300px, 90vw, 380px)',
-            height: '520px',
+            height: 'min(520px, calc(100dvh - 8rem))',
             borderRadius: '1.5rem',
             background: '#ffffff',
             boxShadow: '0 20px 60px rgba(0,0,0,0.18)',
@@ -440,10 +435,8 @@ export default function Chatbot() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen((v) => !v)}
-        className="fixed z-50"
+        className="fixed bottom-4 right-3 z-50 sm:bottom-8 sm:right-8"
         style={{
-          bottom: '2rem',
-          right: '2rem',
           width: '56px',
           height: '56px',
           borderRadius: '50%',

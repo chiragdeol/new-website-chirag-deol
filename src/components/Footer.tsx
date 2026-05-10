@@ -39,18 +39,19 @@ export default function Footer() {
   };
 
   return (
-    <footer ref={sectionRef} className="mdx-footer" style={{ padding: '8rem 5rem 3rem' }}>
+    <footer ref={sectionRef} className="mdx-footer">
       {/* Top: Big text */}
       <div className="max-w-7xl mx-auto">
         <p
-          className="reveal"
+          className="reveal max-w-xl text-balance"
           style={{
             fontFamily: 'Inter, sans-serif',
-            fontSize: '0.85rem',
+            fontSize: 'clamp(0.72rem, 2.8vw, 0.85rem)',
             color: '#8a8f8d',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
             marginBottom: '1.5rem',
+            lineHeight: 1.45,
           }}
         >
           Is there a fascinating project
@@ -60,13 +61,14 @@ export default function Footer() {
         {/* Email link */}
         <a
           href="mailto:hello@chiragdeol.in"
-          className="flex items-center gap-4 group mb-16 reveal"
+          className="group mb-12 flex max-w-full flex-col gap-3 reveal sm:mb-16 sm:flex-row sm:items-center sm:gap-4"
           style={{ textDecoration: 'none', width: 'fit-content' }}
         >
-          <div className="overflow-hidden" style={{ width: '3.5rem', height: '3.5rem' }}>
+          <div className="h-10 w-10 shrink-0 overflow-hidden sm:h-[3.5rem] sm:w-[3.5rem]">
             <svg
-              width="56"
-              height="56"
+              width="40"
+              height="40"
+              className="h-full w-full group-hover:translate-x-14 group-hover:-translate-y-14 sm:h-14 sm:w-14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#FCFCFD"
@@ -75,7 +77,6 @@ export default function Footer() {
                 transition: 'transform 0.6s cubic-bezier(0.625, 0.05, 0, 1)',
                 filter: 'drop-shadow(#FCFCFD -3.5rem 3.5rem 0px)',
               }}
-              className="group-hover:translate-x-14 group-hover:-translate-y-14"
             >
               <path d="M7 17L17 7M17 7H7M17 7v10" />
             </svg>
@@ -83,14 +84,15 @@ export default function Footer() {
           <span
             style={{
               fontFamily: 'Playfair Display, serif',
-              fontSize: 'clamp(2rem, 4vw, 4.5rem)',
+              fontSize: 'clamp(1.35rem, 7vw, 4.5rem)',
               fontWeight: 500,
               color: '#FCFCFD',
               letterSpacing: '0.02em',
-              lineHeight: 1,
+              lineHeight: 1.1,
               transition: 'opacity 0.3s ease-out',
+              wordBreak: 'break-word',
             }}
-            className="group-hover:opacity-80"
+            className="group-hover:opacity-80 min-w-0"
           >
             hello@chiragdeol.in
           </span>
@@ -98,14 +100,14 @@ export default function Footer() {
 
         {/* Nav + Social */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-16 reveal">
-          <nav className="flex flex-wrap gap-8">
+          <nav className="grid grid-cols-2 gap-x-6 gap-y-4 sm:flex sm:flex-wrap sm:gap-8">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollTo(link.id)}
                 style={{
                   fontFamily: 'Playfair Display, serif',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.05rem, 4.5vw, 1.5rem)',
                   fontWeight: 500,
                   color: '#FCFCFD',
                   letterSpacing: '0.02em',
@@ -113,6 +115,7 @@ export default function Footer() {
                   border: 'none',
                   cursor: 'pointer',
                   padding: 0,
+                  textAlign: 'left',
                   transition: 'opacity 0.3s ease-out',
                 }}
                 onMouseEnter={(e) => {
@@ -165,7 +168,7 @@ export default function Footer() {
         />
 
         {/* Bottom */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 reveal">
+        <div className="flex flex-col gap-6 sm:gap-4 md:flex-row md:items-center md:justify-between reveal">
           {/* Logo */}
           <div className="flex items-center gap-2">
             <span

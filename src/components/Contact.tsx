@@ -258,7 +258,7 @@ export default function Contact() {
                 </svg>
               </a>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919870903026"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex items-center justify-center"

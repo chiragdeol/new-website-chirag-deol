@@ -26,7 +26,6 @@ const services = [
     tags: ['Conversion UX', 'Performance Core', 'SEO Structure', 'CMS Ready'],
     outcome: 'Sharper brand trust and stronger inbound leads',
     angle: -30,
-    radius: 320,
   },
   {
     id: 2,
@@ -48,7 +47,6 @@ const services = [
     tags: ['Native + Cross Platform', 'Launch Sprints', 'Analytics Ready', 'Store Deployment'],
     outcome: 'Higher retention and smoother product adoption',
     angle: 30,
-    radius: 320,
   },
   {
     id: 3,
@@ -70,7 +68,6 @@ const services = [
     tags: ['Custom Theme Build', 'Plugin Strategy', 'Security Hardening', 'Editor-Friendly'],
     outcome: 'Faster content operations with fewer technical blockers',
     angle: -150,
-    radius: 320,
   },
   {
     id: 4,
@@ -92,7 +89,6 @@ const services = [
     tags: ['Listing Discovery', 'IDX + CRM', 'Lead Scoring', 'Virtual Tour UX'],
     outcome: 'Better lead quality for sales teams',
     angle: 150,
-    radius: 320,
   },
   {
     id: 5,
@@ -115,7 +111,6 @@ const services = [
     tags: ['Checkout Optimization', 'Catalog Architecture', 'Payments + Ops', 'Scale-Ready'],
     outcome: 'Higher revenue per visitor',
     angle: 90,
-    radius: 320,
   },
   {
     id: 6,
@@ -136,14 +131,23 @@ const services = [
     tags: ['UX Research', 'Interface Systems', 'Interaction Design', 'Prototype Testing'],
     outcome: 'Clearer user journeys and higher conversion confidence',
     angle: -90,
-    radius: 320,
   },
 ];
+
+function getOrbitRadius(width: number) {
+  if (width < 380) return Math.max(88, Math.round(width * 0.26));
+  if (width < 480) return Math.min(120, Math.round(width * 0.28));
+  if (width < 640) return 140;
+  if (width < 900) return 200;
+  if (width < 1200) return 260;
+  return 320;
+}
 
 export default function Services({ onScrollTo }: ServicesProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeService, setActiveService] = useState<number>(0);
   const [pillPositions, setPillPositions] = useState<{ x: number; y: number }[]>([]);
+  const [orbitRadius, setOrbitRadius] = useState(200);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -164,24 +168,34 @@ export default function Services({ onScrollTo }: ServicesProps) {
   }, []);
 
   useEffect(() => {
+    const updateRadius = () => {
+      if (typeof window === 'undefined') return;
+      setOrbitRadius(getOrbitRadius(window.innerWidth));
+    };
+    updateRadius();
+    window.addEventListener('resize', updateRadius);
+    return () => window.removeEventListener('resize', updateRadius);
+  }, []);
+
+  useEffect(() => {
     const positions = services.map((s) => {
       const rad = (s.angle * Math.PI) / 180;
       return {
-        x: Math.cos(rad) * s.radius,
-        y: Math.sin(rad) * s.radius,
+        x: Math.cos(rad) * orbitRadius,
+        y: Math.sin(rad) * orbitRadius,
       };
     });
     setPillPositions(positions);
-  }, []);
+  }, [orbitRadius]);
 
   return (
     <section
       id="services"
       ref={sectionRef}
-      className="relative overflow-hidden"
+      className="relative overflow-x-hidden"
       style={{
         background: 'linear-gradient(160deg, #f8f6f3 0%, #f0ece6 40%, #fafaf9 100%)',
-        padding: 'clamp(5rem, 12vw, 8.5rem) 0',
+        padding: 'clamp(4rem, 10vw, 8.5rem) 0',
       }}
     >
       {/* Background orbs */}
@@ -210,7 +224,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-8 md:px-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20">
         {/* Header */}
         <div className="mb-14 reveal md:mb-16">
           <div className="section-label">What We Do</div>
@@ -235,30 +249,30 @@ export default function Services({ onScrollTo }: ServicesProps) {
 
         {/* Sphere + Pills Visual */}
         <div
-          className="relative flex items-center justify-center reveal"
+          className="relative mx-auto flex w-full max-w-[min(100%,520px)] items-center justify-center reveal sm:max-w-none"
           style={{
-            height: 'clamp(500px, 70vw, 780px)',
-            marginBottom: 'clamp(3rem, 6vw, 5.5rem)',
+            minHeight: 'clamp(340px, 92vw, 780px)',
+            height: 'clamp(360px, 85vmin, 780px)',
+            marginBottom: 'clamp(2rem, 5vw, 5.5rem)',
           }}
         >
           {/* Sphere */}
           <div
-            className="absolute"
+            className="absolute sphere-float-wrap"
             style={{
               top: '50%',
               left: '50%',
-              transform: 'translate(-50%, -50%)',
               zIndex: 2,
             }}
           >
-            {/* Fuzzy glowing sphere */}
+            {/* Fuzzy glowing sphere — inner layers rotate slowly (reference-style motion) */}
             <div
+              className="sphere-rotate-inner"
               style={{
-                width: 'clamp(200px, 28vw, 380px)',
-                height: 'clamp(200px, 28vw, 380px)',
+                width: 'clamp(160px, 42vmin, 380px)',
+                height: 'clamp(160px, 42vmin, 380px)',
                 borderRadius: '50%',
                 position: 'relative',
-                animation: 'spherePulse 4s ease-in-out infinite',
               }}
             >
               {/* Core glow */}
@@ -341,7 +355,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
               >
                 <button
                   onClick={() => setActiveService(i)}
-                  className="absolute"
+                  className="absolute max-w-[min(148px,42vw)] touch-manipulation text-left sm:max-w-none sm:gap-2 sm:px-[1.05rem] sm:py-[0.6rem]"
                   style={{
                     top: '50%',
                     left: '50%',
@@ -350,17 +364,17 @@ export default function Services({ onScrollTo }: ServicesProps) {
                     backdropFilter: 'blur(16px)',
                     border: `1.5px solid ${isActive ? '#111822' : 'rgba(255,130,0,0.35)'}`,
                     borderRadius: '3rem',
-                    padding: '0.65rem 1.3rem',
+                    padding: '0.5rem 0.75rem',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
+                    gap: '0.35rem',
                     cursor: 'pointer',
                     transition: 'all 0.4s cubic-bezier(0.625, 0.05, 0, 1)',
                     boxShadow: isActive
                       ? '0 8px 32px rgba(17,24,34,0.25)'
                       : '0 4px 20px rgba(0,0,0,0.08)',
-                    whiteSpace: 'nowrap',
                   }}
+                  type="button"
                   onMouseEnter={(e) => {
                     if (!isActive) {
                       (e.currentTarget as HTMLButtonElement).style.background =
@@ -386,9 +400,9 @@ export default function Services({ onScrollTo }: ServicesProps) {
                     {service.icon}
                   </span>
                   <span
+                    className="min-w-0 max-w-[7.25rem] truncate text-[0.68rem] font-medium leading-snug sm:max-w-none sm:text-[0.82rem]"
                     style={{
                       fontFamily: 'var(--font-body), sans-serif',
-                      fontSize: '0.82rem',
                       fontWeight: 500,
                       color: isActive ? '#ffffff' : '#334049',
                       letterSpacing: '0.02em',
@@ -402,13 +416,38 @@ export default function Services({ onScrollTo }: ServicesProps) {
           })}
 
           <style>{`
+            .sphere-float-wrap {
+              animation: sphereDrift 14s ease-in-out infinite;
+              will-change: transform;
+            }
+            .sphere-rotate-inner {
+              animation:
+                spherePulse 5s ease-in-out infinite,
+                sphereRotate 75s linear infinite;
+              will-change: transform, filter;
+            }
+            @keyframes sphereDrift {
+              0%, 100% { transform: translate(-50%, -50%) translate(0, 0); }
+              33% { transform: translate(-50%, -50%) translate(5px, -7px); }
+              66% { transform: translate(-50%, -50%) translate(-4px, 5px); }
+            }
+            @keyframes sphereRotate {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
             @keyframes spherePulse {
-              0%, 100% { transform: scale(1); filter: drop-shadow(0 0 28px rgba(255,130,0,0.22)); }
-              50% { transform: scale(1.024); filter: drop-shadow(0 0 42px rgba(255,130,0,0.32)); }
+              0%, 100% { filter: drop-shadow(0 0 28px rgba(255,130,0,0.22)); }
+              50% { filter: drop-shadow(0 0 44px rgba(255,130,0,0.34)); }
             }
             @keyframes pillFloat {
               0%, 100% { margin-top: 0px; }
-              50% { margin-top: -10px; }
+              50% { margin-top: -8px; }
+            }
+            @media (prefers-reduced-motion: reduce) {
+              .sphere-float-wrap { animation: none !important; transform: translate(-50%, -50%) !important; }
+              .sphere-rotate-inner {
+                animation: spherePulse 5s ease-in-out infinite !important;
+              }
             }
           `}</style>
         </div>

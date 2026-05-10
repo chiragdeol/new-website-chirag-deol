@@ -130,13 +130,11 @@ export default function HomePage() {
 
       {/* WhatsApp floating button */}
       <a
-        href="https://wa.me/919876543210"
+        href="https://wa.me/919870903026"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed z-40 w-14 h-14 rounded-full flex items-center justify-center"
+        className="fixed bottom-[5.25rem] right-3 z-40 flex h-12 w-12 items-center justify-center rounded-full sm:bottom-[5.5rem] sm:right-8 sm:h-14 sm:w-14"
         style={{
-          bottom: '5.5rem',
-          right: '2rem',
           background: '#25D366',
           boxShadow: '0 4px 20px rgba(37, 211, 102, 0.4)',
           transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
