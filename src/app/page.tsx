@@ -47,7 +47,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="relative">
+    <main className="relative pb-40 sm:pb-44">
       {/* Loader overlay - fades out */}
       <div
         id="page-loader"
