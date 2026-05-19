@@ -6,12 +6,12 @@ export default function Stats() {
   const countersStarted = useRef(false);
 
   const stats = [
-    { value: 70, suffix: '+', label: 'Projects Completed', icon: '◎' },
-    { value: 6, suffix: '+', label: 'Years Experience', icon: '◈' },
-    { value: 60, suffix: '+', label: 'Happy Clients', icon: '◉' },
-    { value: 98, suffix: '%', label: 'Client Satisfaction', icon: '◐' },
-    { value: 50, suffix: '+', label: 'E-commerce Platforms', icon: '◑' },
-    { value: 24, suffix: '/7', label: 'Support Available', icon: '◒' },
+    { value: 70,  suffix: '+',  label: 'Projects\nCompleted',      size: 240, top: '8%',  left: '2%',  accent: false },
+    { value: 500, suffix: '+',  label: 'Hours of\nDesign Work',    size: 310, top: '2%',  left: '28%', accent: false },
+    { value: 4,   suffix: '',   label: 'Service\nAreas',           size: 200, top: '5%',  left: '62%', accent: false },
+    { value: 60,  suffix: '+',  label: 'Happy\nClients',           size: 270, top: '44%', left: '12%', accent: false },
+    { value: 25,  suffix: '+',  label: 'Years of\nCombined Exp.',  size: 250, top: '38%', left: '46%', accent: true  },
+    { value: 98,  suffix: '%',  label: 'Client\nSatisfaction',     size: 210, top: '42%', left: '75%', accent: false },
   ];
 
   useEffect(() => {
@@ -20,15 +20,10 @@ export default function Stats() {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !countersStarted.current) {
             countersStarted.current = true;
-            const reveals = entry.target.querySelectorAll('.reveal');
-            reveals.forEach((el, i) => {
-              setTimeout(() => el.classList.add('visible'), i * 80);
-            });
-            // Animate counters
             const counters = entry.target.querySelectorAll('[data-target]');
             counters.forEach((counter) => {
               const target = parseInt(counter.getAttribute('data-target') || '0');
-              const duration = 2000;
+              const duration = 2200;
               const step = target / (duration / 16);
               let current = 0;
               const timer = setInterval(() => {
@@ -43,7 +38,7 @@ export default function Stats() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -52,124 +47,227 @@ export default function Stats() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 px-8 md:px-20 overflow-hidden"
+      className="relative overflow-hidden"
       style={{
-        background: 'linear-gradient(160deg, #111822 0%, #0d1520 50%, #111822 100%)',
+        background: 'linear-gradient(160deg, #0a0f17 0%, #0d1520 55%, #111822 100%)',
+        padding: 'clamp(4rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem)',
       }}
     >
-      {/* Blur orbs */}
-      <div
-        className="absolute"
-        style={{
-          top: '50%',
-          left: '20%',
-          transform: 'translate(-50%, -50%)',
-          width: '400px',
-          height: '400px',
-          borderRadius: '50%',
-          background: 'rgba(255, 130, 0, 0.08)',
-          filter: 'blur(100px)',
-          pointerEvents: 'none',
-        }}
-      />
+      {/* Ambient glows */}
+      <div className="absolute pointer-events-none" style={{ top: '20%', left: '15%', width: '500px', height: '500px', borderRadius: '50%', background: 'rgba(255,130,0,0.05)', filter: 'blur(130px)' }} />
+      <div className="absolute pointer-events-none" style={{ bottom: '10%', right: '10%', width: '400px', height: '400px', borderRadius: '50%', background: 'rgba(255,130,0,0.04)', filter: 'blur(110px)' }} />
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-16 reveal">
-          <div className="section-label" style={{ color: '#FF8200' }}>
+        <div className="text-center mb-8">
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontFamily: 'var(--font-body), sans-serif',
+              fontSize: '0.72rem',
+              letterSpacing: '0.14em',
+              color: '#FF8200',
+              textTransform: 'uppercase',
+              marginBottom: '1.2rem',
+            }}
+          >
+            <span style={{ width: '20px', height: '1px', background: '#FF8200', display: 'inline-block' }} />
             Proven by Results
+            <span style={{ width: '20px', height: '1px', background: '#FF8200', display: 'inline-block' }} />
           </div>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <h2
-              style={{
-                fontFamily: 'Playfair Display, serif',
-                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-                fontWeight: 500,
-                color: '#FCFCFD',
-                lineHeight: 1.0,
-                letterSpacing: '0.02em',
-              }}
-            >
-              Numbers That Speak
-              <br />
-              <span style={{ color: '#8a8f8d' }}>Louder Than Words.</span>
-            </h2>
-            <p
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '1rem',
-                color: '#8a8f8d',
-                maxWidth: '360px',
-                lineHeight: 1.7,
-              }}
-            >
-              Our track record of excellence and client success across diverse industries and
-              geographies.
-            </p>
-          </div>
+          <h2
+            style={{
+              fontFamily: 'Playfair Display, serif',
+              fontSize: 'clamp(2.2rem, 4.5vw, 4rem)',
+              fontWeight: 500,
+              color: '#FCFCFD',
+              lineHeight: 1.05,
+              letterSpacing: '0.01em',
+            }}
+          >
+            Numbers That Speak
+            <br />
+            <span style={{ color: 'rgba(252,252,253,0.28)' }}>Louder Than Words.</span>
+          </h2>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {stats.map((stat, i) => (
+        {/* ── Orb Field ── */}
+        <div
+          className="stats-orb-field"
+          style={{
+            position: 'relative',
+            width: '100%',
+            height: 'clamp(500px, 65vw, 720px)',
+          }}
+        >
+          {stats.map((stat, i) => {
+            const isAccent = stat.accent;
+            const px = `clamp(${Math.round(stat.size * 0.5)}px, ${(stat.size / 1280) * 100 * 2.6}vw, ${stat.size}px)`;
+
+            return (
+              <div
+                key={stat.label}
+                className="stats-orb-item"
+                style={{
+                  position: 'absolute',
+                  top: stat.top,
+                  left: stat.left,
+                  width: px,
+                  height: px,
+                  borderRadius: '50%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  padding: '1.2rem',
+                  cursor: 'default',
+                  animation: `orbFloat${i} ${4 + i * 0.5}s ease-in-out infinite`,
+                  transition: 'transform 0.35s ease, box-shadow 0.35s ease',
+                  /* Glossy dark sphere */
+                  background: isAccent
+                    ? 'radial-gradient(circle at 35% 28%, #d97000 0%, #FF8200 38%, #b85e00 80%, #7a3d00 100%)'
+                    : 'radial-gradient(circle at 32% 26%, #1e2e42 0%, #14202e 42%, #0d1724 75%, #080f18 100%)',
+                  boxShadow: isAccent
+                    ? '0 0 0 1px rgba(255,130,0,0.35), 0 8px 60px rgba(255,130,0,0.4), 0 0 120px rgba(255,130,0,0.15), inset 0 1px 0 rgba(255,210,140,0.3)'
+                    : '0 0 0 1px rgba(255,255,255,0.07), 0 8px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.09), inset 0 -2px 8px rgba(0,0,0,0.4)',
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.transform = 'scale(1.07)';
+                  if (!isAccent)
+                    el.style.boxShadow = '0 0 0 1px rgba(255,130,0,0.3), 0 12px 60px rgba(255,130,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.transform = 'scale(1)';
+                  if (!isAccent)
+                    el.style.boxShadow = '0 0 0 1px rgba(255,255,255,0.07), 0 8px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.09), inset 0 -2px 8px rgba(0,0,0,0.4)';
+                }}
+              >
+                {/* Specular highlight */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '10%',
+                    left: '20%',
+                    width: '35%',
+                    height: '20%',
+                    borderRadius: '50%',
+                    background: isAccent
+                      ? 'rgba(255,240,200,0.22)'
+                      : 'rgba(255,255,255,0.08)',
+                    filter: 'blur(6px)',
+                    pointerEvents: 'none',
+                  }}
+                />
+
+                {/* Number */}
+                <div
+                  style={{
+                    fontFamily: 'Playfair Display, serif',
+                    fontSize: `clamp(1.8rem, ${(stat.size / 1280) * 14}vw, ${Math.round(stat.size * 0.3)}px)`,
+                    fontWeight: 700,
+                    color: '#ffffff',
+                    lineHeight: 0.95,
+                    letterSpacing: '-0.02em',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    position: 'relative',
+                    zIndex: 1,
+                  }}
+                >
+                  <span data-target={stat.value}>0</span>
+                  {stat.suffix && (
+                    <span
+                      style={{
+                        fontSize: '0.48em',
+                        color: isAccent ? 'rgba(255,255,255,0.9)' : '#FF8200',
+                        fontWeight: 800,
+                        marginTop: '0.15em',
+                        marginLeft: '1px',
+                      }}
+                    >
+                      {stat.suffix}
+                    </span>
+                  )}
+                </div>
+
+                {/* Label */}
+                <p
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: `clamp(0.58rem, ${(stat.size / 1280) * 2.8}vw, ${Math.max(10, Math.round(stat.size * 0.075))}px)`,
+                    color: isAccent ? 'rgba(255,255,255,0.78)' : 'rgba(255,255,255,0.38)',
+                    letterSpacing: '0.03em',
+                    lineHeight: 1.4,
+                    marginTop: '0.45rem',
+                    whiteSpace: 'pre-line',
+                    textAlign: 'center',
+                    position: 'relative',
+                    zIndex: 1,
+                  }}
+                >
+                  {stat.label}
+                </p>
+              </div>
+            );
+          })}
+
+          {/* Scattered tiny star dots */}
+          {[
+            { top: '15%', left: '55%' }, { top: '70%', left: '5%' },
+            { top: '85%', left: '40%' }, { top: '30%', left: '90%' },
+            { top: '60%', left: '70%' }, { top: '5%',  left: '82%' },
+          ].map((dot, i) => (
             <div
-              key={stat.label}
-              className="reveal"
+              key={i}
               style={{
-                transitionDelay: `${i * 80}ms`,
-                padding: '2rem 1.5rem',
-                border: '1px solid rgba(138,143,141,0.15)',
-                borderRadius: '1rem',
-                background: 'rgba(255,255,255,0.03)',
-                transition: 'all 0.3s ease-out',
+                position: 'absolute',
+                top: dot.top,
+                left: dot.left,
+                width: i % 2 === 0 ? '3px' : '2px',
+                height: i % 2 === 0 ? '3px' : '2px',
+                borderRadius: '50%',
+                background: i % 3 === 0 ? '#FF8200' : 'rgba(255,255,255,0.35)',
+                boxShadow: i % 3 === 0 ? '0 0 6px #FF8200' : 'none',
               }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(255,130,0,0.3)';
-                (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,130,0,0.05)';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(138,143,141,0.15)';
-                (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.03)';
-              }}
-            >
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center mb-3"
-                style={{
-                  background: 'rgba(255, 130, 0, 0.1)',
-                  border: '1px solid rgba(255, 130, 0, 0.2)',
-                }}
-              >
-                <span style={{ fontSize: '0.9rem', color: '#FF8200' }}>{stat.icon}</span>
-              </div>
-              <div
-                style={{
-                  fontFamily: 'Playfair Display, serif',
-                  fontSize: '2.5rem',
-                  fontWeight: 600,
-                  color: '#FCFCFD',
-                  lineHeight: 1,
-                  letterSpacing: '0.02em',
-                  marginBottom: '0.4rem',
-                }}
-              >
-                <span data-target={stat.value}>0</span>
-                <span>{stat.suffix}</span>
-              </div>
-              <p
-                style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '0.75rem',
-                  color: '#8a8f8d',
-                  letterSpacing: '0.04em',
-                  lineHeight: 1.4,
-                }}
-              >
-                {stat.label}
-              </p>
-            </div>
+            />
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes orbFloat0 { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-14px)} }
+        @keyframes orbFloat1 { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-10px)} }
+        @keyframes orbFloat2 { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-16px)} }
+        @keyframes orbFloat3 { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-12px)} }
+        @keyframes orbFloat4 { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-10px)} }
+        @keyframes orbFloat5 { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-14px)} }
+
+        .stats-orb-item:hover { animation-play-state: paused !important; }
+
+        /* Mobile — switch to 2-col flex wrap */
+        @media (max-width: 768px) {
+          .stats-orb-field {
+            position: static !important;
+            height: auto !important;
+            display: flex !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            gap: 1rem !important;
+            padding: 1rem 0 !important;
+          }
+          .stats-orb-item {
+            position: static !important;
+            width: clamp(130px, 40vw, 175px) !important;
+            height: clamp(130px, 40vw, 175px) !important;
+            flex-shrink: 0 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

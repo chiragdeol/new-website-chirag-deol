@@ -1,5 +1,6 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 interface NavbarProps {
   activeSection: string;
@@ -29,18 +30,10 @@ export default function Navbar({ activeSection }: NavbarProps) {
     };
   }, [menuOpen]);
 
-  const scrollTo = (id: string) => {
-    setMenuOpen(false);
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 300);
-  };
-
   const navLinks = [
-    { label: 'Home', id: 'hero' },
-    { label: 'Services', id: 'services' },
-    { label: 'Work', id: 'portfolio' },
+    { label: 'Home', href: '/#hero', id: 'hero' },
+    { label: 'Services', href: '/#services', id: 'services' },
+    { label: 'Work', href: '/portfolio', id: 'portfolio' },
   ];
 
   return (
@@ -51,8 +44,8 @@ export default function Navbar({ activeSection }: NavbarProps) {
       >
         {/* Left: Logo */}
         <div className="flex items-center gap-8">
-          <button
-            onClick={() => scrollTo('hero')}
+          <Link
+            href="/#hero"
             className="flex items-center gap-2 group"
             aria-label="Chirag Deol - Home"
           >
@@ -72,15 +65,15 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 style={{ backgroundColor: '#FF8200' }}
               />
             </div>
-          </button>
+          </Link>
         </div>
 
         {/* Center: Nav Links (desktop) */}
         <div className="hidden md:flex items-center gap-12">
           {navLinks.map((link) => (
-            <button
+            <Link
               key={link.id}
-              onClick={() => scrollTo(link.id)}
+              href={link.href}
               className="relative group"
               style={{
                 color: activeSection === link.id ? '#111822' : '#8a8f8d',
@@ -89,10 +82,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 fontWeight: 400,
                 letterSpacing: '0.02em',
                 transition: 'color 0.3s ease-out',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                padding: 0,
+                textDecoration: 'none',
               }}
             >
               {link.label}
@@ -105,17 +95,17 @@ export default function Navbar({ activeSection }: NavbarProps) {
                   transitionTimingFunction: 'cubic-bezier(0.625, 0.05, 0, 1)',
                 }}
               />
-            </button>
+            </Link>
           ))}
         </div>
 
         {/* Right: CTA + Menu */}
         <div className="flex items-center gap-8">
           {/* Let's Talk - desktop */}
-          <button
-            onClick={() => scrollTo('contact')}
+          <Link
+            href="/#contact"
             className="hidden md:flex btn-cta"
-            style={{ padding: '1rem 2.4rem' }}
+            style={{ padding: '1rem 2.4rem', textDecoration: 'none' }}
           >
             <div className="btn-bg" />
             <span className="btn-text" style={{ fontSize: '0.85rem', letterSpacing: '0.1em' }}>
@@ -126,7 +116,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 <path d="M7 17L17 7M17 7H7M17 7v10" />
               </svg>
             </span>
-          </button>
+          </Link>
 
           {/* Divider */}
           <div
@@ -213,34 +203,25 @@ export default function Navbar({ activeSection }: NavbarProps) {
         {/* Menu Links */}
         <nav className="flex flex-col gap-6 flex-1">
           {[
-            { label: 'Home', id: 'hero' },
-            { label: 'Services', id: 'services' },
-            { label: 'Portfolio', id: 'portfolio' },
-            { label: 'About', id: 'why' },
-            { label: 'Contact', id: 'contact' },
-          ].map((link, i) => (
-            <button
-              key={link.id}
-              onClick={() => scrollTo(link.id)}
+            { label: 'Home', href: '/#hero' },
+            { label: 'Services', href: '/#services' },
+            { label: 'Work', href: '/portfolio' },
+            { label: 'Contact', href: '/#contact' },
+          ].map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
               className="text-left group flex items-center gap-3"
               style={{
                 fontFamily: 'Playfair Display, serif',
                 fontSize: 'clamp(2rem, 5vw, 3.5rem)',
                 fontWeight: 500,
                 color: '#111822',
-                opacity: 0.5,
+                opacity: 0.75,
                 letterSpacing: '0.02em',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                padding: 0,
+                textDecoration: 'none',
                 transition: 'opacity 0.3s ease-out',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.opacity = '1';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.opacity = '0.5';
               }}
             >
               <span
@@ -248,7 +229,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 style={{ backgroundColor: '#FF8200', opacity: 0, transition: 'opacity 0.3s' }}
               />
               {link.label}
-            </button>
+            </Link>
           ))}
         </nav>
 
