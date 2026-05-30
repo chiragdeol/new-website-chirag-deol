@@ -215,7 +215,7 @@ export default function Industries() {
       id="industries"
       ref={sectionRef}
       className="relative py-28 px-8 md:px-20 overflow-hidden md:py-36"
-      style={{ background: '#ffffff' }}
+      style={{ background: '#04070a' }}
     >
       {/* Decorative orb */}
       <div
@@ -237,15 +237,15 @@ export default function Industries() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <h2
               className="display-heading"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', maxWidth: '600px' }}
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', maxWidth: '600px', color: '#ffffff' }}
             >
               Crafted for Complex
               <br />
-              <span style={{ color: '#8a8f8d' }}>Industry Needs.</span>
+              <span style={{ color: 'rgba(252,252,253,0.45)' }}>Industry Needs.</span>
             </h2>
             <p
               className="body-text"
-              style={{ fontSize: '1rem', maxWidth: '360px', lineHeight: 1.7 }}
+              style={{ fontSize: '1rem', maxWidth: '360px', lineHeight: 1.7, color: 'rgba(252,252,253,0.5)' }}
             >
               Every sector has different trust triggers, buying cycles, and conversion blockers. We
               design around those realities, not generic templates.
@@ -264,27 +264,27 @@ export default function Industries() {
               onMouseLeave={() => setHoveredId(null)}
             >
               <div
-                className="industry-card-inner"
+                className="industry-card-inner group"
                 style={{
                   padding: '2rem',
                   borderRadius: '1.2rem',
-                  border: `1px solid ${hoveredId === industry?.id ? industry?.border : 'rgba(138,143,141,0.15)'}`,
+                  border: `1px solid ${hoveredId === industry?.id ? industry?.border : 'rgba(255,255,255,0.06)'}`,
                   background:
                     hoveredId === industry?.id
-                      ? `linear-gradient(180deg, ${industry?.bg} 0%, rgba(255,255,255,0.95) 100%)`
-                      : 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(250,249,247,1) 100%)',
+                      ? `linear-gradient(180deg, ${industry?.bg} 0%, #0a0f18 100%)`
+                      : 'linear-gradient(180deg, #0d1117 0%, #070a0f 100%)',
                   cursor: 'default',
                   height: '100%',
                 }}
               >
                 {/* Icon */}
                 <div
-                  className="industry-card-icon-wrap w-12 h-12 rounded-xl mb-5 flex items-center justify-center"
+                  className="industry-card-icon-wrap w-12 h-12 rounded-xl mb-5 flex items-center justify-center transition-colors duration-300"
                   style={{
                     background:
-                      hoveredId === industry?.id ? industry?.bg : 'rgba(138,143,141,0.06)',
-                    border: `1px solid ${hoveredId === industry?.id ? industry?.border : 'rgba(138,143,141,0.15)'}`,
-                    color: hoveredId === industry?.id ? industry?.color : '#8a8f8d',
+                      hoveredId === industry?.id ? industry?.bg : 'rgba(255,255,255,0.03)',
+                    border: `1px solid ${hoveredId === industry?.id ? industry?.border : 'rgba(255,255,255,0.08)'}`,
+                    color: hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.5)',
                   }}
                 >
                   {industry?.icon}
@@ -296,7 +296,7 @@ export default function Industries() {
                     fontFamily: 'var(--font-display), sans-serif',
                     fontSize: '1.2rem',
                     fontWeight: 600,
-                    color: '#111822',
+                    color: '#ffffff',
                     marginBottom: '0.5rem',
                     lineHeight: 1.3,
                   }}
@@ -309,9 +309,10 @@ export default function Industries() {
                   style={{
                     fontFamily: 'var(--font-body), sans-serif',
                     fontSize: '0.86rem',
-                    color: '#6f7673',
+                    color: hoveredId === industry?.id ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.5)',
                     lineHeight: 1.65,
                     marginBottom: '1.1rem',
+                    transition: 'color 0.3s ease-out',
                   }}
                 >
                   {industry?.desc}
@@ -326,7 +327,7 @@ export default function Industries() {
                       fontFamily: 'var(--font-body), sans-serif',
                       fontSize: '0.74rem',
                       fontWeight: 600,
-                      color: hoveredId === industry?.id ? industry?.color : '#8a8f8d',
+                      color: hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.4)',
                       transition: 'color 0.3s ease-out',
                       letterSpacing: '0.04em',
                     }}
@@ -336,7 +337,7 @@ export default function Industries() {
                         width: '6px',
                         height: '6px',
                         borderRadius: '50%',
-                        background: hoveredId === industry?.id ? industry?.color : '#8a8f8d',
+                        background: hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.4)',
                         transition: 'background 0.3s ease-out',
                       }}
                     />
@@ -347,7 +348,7 @@ export default function Industries() {
                       fontFamily: 'var(--font-body), sans-serif',
                       fontSize: '0.72rem',
                       letterSpacing: '0.04em',
-                      color: hoveredId === industry?.id ? industry?.color : '#8a8f8d',
+                      color: hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.4)',
                       opacity: 0.95,
                     }}
                   >

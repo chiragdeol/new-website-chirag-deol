@@ -194,7 +194,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
       ref={sectionRef}
       className="relative overflow-x-hidden"
       style={{
-        background: 'linear-gradient(160deg, #f8f6f3 0%, #f0ece6 40%, #fafaf9 100%)',
+        background: 'linear-gradient(160deg, #04070a 0%, #0a0f18 40%, #0d1117 100%)',
         padding: 'clamp(4rem, 10vw, 8.5rem) 0',
       }}
     >
@@ -231,15 +231,15 @@ export default function Services({ onScrollTo }: ServicesProps) {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <h2
               className="display-heading"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', maxWidth: '600px' }}
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', maxWidth: '600px', color: '#ffffff' }}
             >
               Services Built
               <br />
-              <span style={{ color: '#8a8f8d' }}>to Convert.</span>
+              <span style={{ color: 'rgba(252,252,253,0.45)' }}>to Convert.</span>
             </h2>
             <p
               className="body-text"
-              style={{ fontSize: '1rem', maxWidth: '360px', lineHeight: 1.7 }}
+              style={{ fontSize: '1rem', maxWidth: '360px', lineHeight: 1.7, color: 'rgba(252,252,253,0.5)' }}
             >
               From concept to launch — we craft digital experiences that don&apos;t just look great,
               they are architected to create business outcomes you can measure.
@@ -360,9 +360,9 @@ export default function Services({ onScrollTo }: ServicesProps) {
                     top: '50%',
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
-                    background: isActive ? '#111822' : 'rgba(255,255,255,0.92)',
+                    background: isActive ? '#111822' : 'rgba(255,255,255,0.05)',
                     backdropFilter: 'blur(16px)',
-                    border: `1.5px solid ${isActive ? '#111822' : 'rgba(255,130,0,0.35)'}`,
+                    border: `1.5px solid ${isActive ? '#FF8200' : 'rgba(255,255,255,0.1)'}`,
                     borderRadius: '3rem',
                     padding: '0.5rem 0.75rem',
                     display: 'flex',
@@ -371,32 +371,32 @@ export default function Services({ onScrollTo }: ServicesProps) {
                     cursor: 'pointer',
                     transition: 'all 0.4s cubic-bezier(0.625, 0.05, 0, 1)',
                     boxShadow: isActive
-                      ? '0 8px 32px rgba(17,24,34,0.25)'
+                      ? '0 8px 32px rgba(255,130,0,0.25)'
                       : '0 4px 20px rgba(0,0,0,0.08)',
                   }}
                   type="button"
                   onMouseEnter={(e) => {
                     if (!isActive) {
                       (e.currentTarget as HTMLButtonElement).style.background =
-                        'rgba(255,255,255,1)';
+                        'rgba(255,255,255,0.1)';
                       (e.currentTarget as HTMLButtonElement).style.boxShadow =
-                        '0 8px 32px rgba(255,130,0,0.2)';
+                        '0 8px 32px rgba(255,130,0,0.1)';
                       (e.currentTarget as HTMLButtonElement).style.borderColor =
-                        'rgba(255,130,0,0.6)';
+                        'rgba(255,130,0,0.3)';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
                       (e.currentTarget as HTMLButtonElement).style.background =
-                        'rgba(255,255,255,0.92)';
+                        'rgba(255,255,255,0.05)';
                       (e.currentTarget as HTMLButtonElement).style.boxShadow =
                         '0 4px 20px rgba(0,0,0,0.08)';
                       (e.currentTarget as HTMLButtonElement).style.borderColor =
-                        'rgba(255,130,0,0.35)';
+                        'rgba(255,255,255,0.1)';
                     }
                   }}
                 >
-                  <span style={{ color: isActive ? '#FF8200' : '#8a8f8d', display: 'flex' }}>
+                  <span style={{ color: isActive ? '#FF8200' : 'rgba(255,255,255,0.5)', display: 'flex' }}>
                     {service.icon}
                   </span>
                   <span
@@ -404,7 +404,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
                     style={{
                       fontFamily: 'var(--font-body), sans-serif',
                       fontWeight: 500,
-                      color: isActive ? '#ffffff' : '#334049',
+                      color: isActive ? '#ffffff' : 'rgba(255,255,255,0.7)',
                       letterSpacing: '0.02em',
                     }}
                   >
@@ -458,9 +458,9 @@ export default function Services({ onScrollTo }: ServicesProps) {
           style={{
             borderRadius: '2rem',
             padding: 'clamp(2rem, 5vw, 3rem)',
-            background: 'rgba(255,255,255,0.72)',
+            background: 'rgba(17,24,34,0.72)',
             backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255,130,0,0.14)',
+            border: '1px solid rgba(255,255,255,0.08)',
           }}
         >
           <div className="flex flex-col md:flex-row gap-8 items-start">
@@ -487,7 +487,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
                   fontFamily: 'var(--font-display), sans-serif',
                   fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
                   fontWeight: 500,
-                  color: '#111822',
+                  color: '#ffffff',
                   marginBottom: '0.75rem',
                   lineHeight: 1.2,
                 }}
@@ -498,7 +498,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
                 style={{
                   fontFamily: 'var(--font-body), sans-serif',
                   fontSize: '1rem',
-                  color: '#8a8f8d',
+                  color: 'rgba(255,255,255,0.6)',
                   lineHeight: 1.7,
                   maxWidth: '600px',
                   marginBottom: '1.5rem',
@@ -510,7 +510,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
                 style={{
                   fontFamily: 'var(--font-body), sans-serif',
                   fontSize: '0.86rem',
-                  color: '#111822',
+                  color: 'rgba(255,255,255,0.9)',
                   marginBottom: '1.1rem',
                   letterSpacing: '0.02em',
                 }}
@@ -563,18 +563,33 @@ export default function Services({ onScrollTo }: ServicesProps) {
                 activeService === i ? 'services-mini-card--active' : ''
               }`}
               style={{
+                transition: 'all 0.4s cubic-bezier(0.625, 0.05, 0, 1)',
                 transitionDelay: `${i * 60}ms`,
-                border: `1px solid ${activeService === i ? 'rgba(255,130,0,0.45)' : 'rgba(17,24,34,0.14)'}`,
-                borderRadius: '1.2rem',
-                background:
-                  activeService === i
-                    ? 'linear-gradient(180deg, rgba(255,130,0,0.08) 0%, rgba(255,255,255,0.9) 100%)'
-                    : 'linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(245,245,243,0.85) 100%)',
-                padding: '1.4rem',
+                border: activeService === i ? '1px solid rgba(255,130,0,0.5)' : '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '1.25rem',
+                background: activeService === i 
+                  ? 'linear-gradient(180deg, rgba(255,130,0,0.12) 0%, #0a0f18 100%)' 
+                  : '#070a0f',
+                padding: '1.6rem',
                 position: 'relative',
                 overflow: 'hidden',
+                boxShadow: activeService === i ? '0 12px 30px rgba(255,130,0,0.08)' : 'none',
               }}
               onClick={() => setActiveService(i)}
+              onMouseEnter={(e) => {
+                if (activeService !== i) {
+                  e.currentTarget.style.borderColor = 'rgba(255,130,0,0.3)';
+                  e.currentTarget.style.background = 'linear-gradient(180deg, rgba(255,130,0,0.04) 0%, #0c1017 100%)';
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeService !== i) {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+                  e.currentTarget.style.background = '#070a0f';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }
+              }}
             >
               <div
                 style={{
@@ -584,7 +599,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
                   fontFamily: 'var(--font-body), sans-serif',
                   fontSize: '0.72rem',
                   letterSpacing: '0.08em',
-                  color: activeService === i ? '#FF8200' : '#8a8f8d',
+                  color: activeService === i ? '#FF8200' : 'rgba(255,255,255,0.3)',
                 }}
               >
                 {(i + 1).toString().padStart(2, '0')}
@@ -593,9 +608,9 @@ export default function Services({ onScrollTo }: ServicesProps) {
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
                 style={{
                   background:
-                    activeService === i ? 'rgba(255,130,0,0.12)' : 'rgba(138,143,141,0.08)',
-                  border: `1px solid ${activeService === i ? 'rgba(255,130,0,0.25)' : 'rgba(138,143,141,0.2)'}`,
-                  color: activeService === i ? '#FF8200' : '#8a8f8d',
+                    activeService === i ? 'rgba(255,130,0,0.15)' : 'rgba(255,255,255,0.03)',
+                  border: `1px solid ${activeService === i ? 'rgba(255,130,0,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                  color: activeService === i ? '#FF8200' : 'rgba(255,255,255,0.6)',
                   transition: 'all 0.3s ease-out',
                 }}
               >
@@ -604,9 +619,9 @@ export default function Services({ onScrollTo }: ServicesProps) {
               <h4
                 style={{
                   fontFamily: 'var(--font-display), sans-serif',
-                  fontSize: '1.1rem',
+                  fontSize: '1.15rem',
                   fontWeight: 500,
-                  color: '#111822',
+                  color: '#ffffff',
                   marginBottom: '0.5rem',
                 }}
               >
@@ -616,7 +631,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
                 style={{
                   fontFamily: 'var(--font-body), sans-serif',
                   fontSize: '0.85rem',
-                  color: '#8a8f8d',
+                  color: 'rgba(255,255,255,0.5)',
                   lineHeight: 1.6,
                   marginBottom: '0.8rem',
                 }}
@@ -627,7 +642,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
                 style={{
                   fontFamily: 'var(--font-body), sans-serif',
                   fontSize: '0.77rem',
-                  color: activeService === i ? '#111822' : '#6f7673',
+                  color: activeService === i ? '#FF8200' : 'rgba(255,255,255,0.4)',
                 }}
               >
                 {service.outcome}

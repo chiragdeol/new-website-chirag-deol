@@ -64,7 +64,7 @@ export default function About({ onScrollTo }: AboutProps) {
       id="why"
       ref={sectionRef}
       className="relative py-28 px-8 md:px-20 overflow-hidden md:py-36"
-      style={{ background: '#ffffff' }}
+      style={{ background: '#04070a' }}
     >
       {/* Background accent */}
       <div
@@ -88,15 +88,15 @@ export default function About({ onScrollTo }: AboutProps) {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <h2
               className="display-heading"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', maxWidth: '600px' }}
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', maxWidth: '600px', color: '#ffffff' }}
             >
               Built with Clarity.
               <br />
-              <span style={{ color: '#8a8f8d' }}>Engineered to Perform.</span>
+              <span style={{ color: 'rgba(252,252,253,0.45)' }}>Engineered to Perform.</span>
             </h2>
             <p
               className="body-text"
-              style={{ fontSize: '1rem', maxWidth: '360px', lineHeight: 1.7 }}
+              style={{ fontSize: '1rem', maxWidth: '360px', lineHeight: 1.7, color: 'rgba(252,252,253,0.5)' }}
             >
               Beyond pretty interfaces, every deliverable is mapped to business outcomes: better
               engagement, stronger brand recall, and measurable conversions.
@@ -112,22 +112,37 @@ export default function About({ onScrollTo }: AboutProps) {
               className="reveal"
               style={{ transitionDelay: `${i * 70}ms` }}
             >
-              <div className="card-why-root">
                 <div
-                  className="card-why-badge w-12 h-12 rounded-xl mb-5 flex items-center justify-center"
+                  className="card-why-root group"
                   style={{
-                    background: 'rgba(255, 130, 0, 0.08)',
-                    border: '1px solid rgba(255, 130, 0, 0.2)',
+                    background: 'linear-gradient(180deg, #0d1117 0%, #070a0f 100%)',
+                    borderColor: 'rgba(255,255,255,0.06)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(255, 130, 0, 0.4)';
+                    e.currentTarget.style.background = 'linear-gradient(180deg, rgba(255, 130, 0, 0.08) 0%, #070a0f 100%)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
+                    e.currentTarget.style.background = 'linear-gradient(180deg, #0d1117 0%, #070a0f 100%)';
+                  }}
+                >
+                <div
+                  className="card-why-badge w-12 h-12 rounded-xl mb-5 flex items-center justify-center transition-colors duration-300"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
                   }}
                 >
                   <span
                     style={{
                       fontSize: '0.8rem',
-                      color: '#FF8200',
+                      color: 'rgba(255, 255, 255, 0.5)',
                       letterSpacing: '0.08em',
                       fontWeight: 600,
                       fontFamily: 'var(--font-body), sans-serif',
                     }}
+                    className="group-hover:text-[#FF8200] transition-colors duration-300"
                   >
                     {feature.icon}
                   </span>
@@ -137,7 +152,7 @@ export default function About({ onScrollTo }: AboutProps) {
                     fontFamily: 'var(--font-display), sans-serif',
                     fontSize: '1.2rem',
                     fontWeight: 600,
-                    color: '#111822',
+                    color: '#ffffff',
                     marginBottom: '0.75rem',
                     lineHeight: 1.25,
                   }}
@@ -148,9 +163,10 @@ export default function About({ onScrollTo }: AboutProps) {
                   style={{
                     fontFamily: 'var(--font-body), sans-serif',
                     fontSize: '0.9rem',
-                    color: '#6f7673',
+                    color: 'rgba(255, 255, 255, 0.5)',
                     lineHeight: 1.65,
                   }}
+                  className="group-hover:text-[rgba(255,255,255,0.7)] transition-colors duration-300"
                 >
                   {feature.desc}
                 </p>

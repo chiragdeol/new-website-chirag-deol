@@ -15,7 +15,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'WEBSITE',
     description: 'A luxury jewellery brand experience built for product storytelling and elegant browsing.',
     url: 'https://kameswarijewellers.in',
-    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-1.png',
     alt: 'Jewellery website with premium gold rings and elegant product display',
   },
   {
@@ -24,7 +24,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'E-COMMERCE',
     description: 'A premium fashion storefront with strong seasonal merchandising and conversion-driven UX.',
     url: 'https://www.talbots.com/',
-    image: 'https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-2.png',
     alt: 'Fashion e-commerce website landing with apparel collection visuals',
   },
   {
@@ -33,7 +33,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'E-COMMERCE',
     description: 'A modern apparel shopping experience designed to highlight style, fit, and product discovery.',
     url: 'https://www.yoursclothing.com/',
-    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-3.png',
     alt: 'Online clothing store product showcase with fashion visuals',
   },
   {
@@ -42,7 +42,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'E-COMMERCE',
     description: 'A beauty retail storefront built for mobile-first browsing and premium brand positioning.',
     url: 'https://beautybarn.in/',
-    image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-4.png',
     alt: 'Beauty products website with vibrant lifestyle imagery',
   },
   {
@@ -51,7 +51,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'WEBSITE',
     description: 'A productivity brand website with clean content layout and onboarding-ready messaging.',
     url: 'https://www.sunsama.com/',
-    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-5.png',
     alt: 'Productivity app website hero layout with soft white space',
   },
   {
@@ -60,7 +60,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'WEBSITE',
     description: 'A sustainable food brand website with bold storytelling and a modern visual system.',
     url: 'https://twogood.com.au/',
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-6.png',
     alt: 'Food brand website with lifestyle imagery and bold typography',
   },
   {
@@ -69,7 +69,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'TRAVEL',
     description: 'A travel and lifestyle site built for immersive destination discovery and bookings.',
     url: 'https://aykyam.com/',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-7.png',
     alt: 'Travel website hero image with destination inspiration',
   },
   {
@@ -78,7 +78,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'REAL ESTATE',
     description: 'A Dubai real estate website showcasing property investment and premium brokering services.',
     url: 'https://aitsquare.com/',
-    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-8.png',
     alt: 'Real estate website featuring Dubai property visuals',
   },
   {
@@ -87,7 +87,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'WEBSITE',
     description: 'A design and interiors site built for high-end creative services and portfolio storytelling.',
     url: 'https://www.dekorcompany.com/',
-    image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-9.png',
     alt: 'Interior design website layout with elegant visuals',
   },
   {
@@ -96,7 +96,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'WEBSITE',
     description: 'A gaming brand website with bold visuals and a playful interactive experience.',
     url: 'https://www.discitgame.com/',
-    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-10.png',
     alt: 'Gaming brand website with immersive graphics',
   },
   {
@@ -105,7 +105,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'WEBSITE',
     description: 'A creative media experience site with strong editorial content and color-forward design.',
     url: 'https://welcometoyellow.com/',
-    image: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-11.png',
     alt: 'Creative brand website with vibrant editorial visuals',
   },
   {
@@ -114,7 +114,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'REAL ESTATE',
     description: 'A premium real estate platform for luxury Dubai property listings and concierge services.',
     url: 'https://www.axrealtors.com/',
-    image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1cf4d2702-1764930716676.png',
+    image: '/portfolio-12.png',
     alt: 'Luxury real estate property image with modern architecture',
   },
   {
@@ -123,7 +123,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'E-COMMERCE',
     description: 'A premium e-commerce storefront for custom wood doors and luxury manufacturing.',
     url: 'https://amberwooddoors.com/',
-    image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1cdd9dc97-1773905879761.png',
+    image: '/portfolio-13.png',
     alt: 'Custom wood door e-commerce product display',
   },
   {
@@ -132,7 +132,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'TRAVEL',
     description: 'A travel booking platform for UAE experiences with immersive destination content.',
     url: 'https://wecation.ae/',
-    image: 'https://images.unsplash.com/photo-1683625895327-52482daed52d?auto=format&fit=crop&w=1200&q=80',
+    image: '/portfolio-14.png',
     alt: 'Vacation destination imagery with luxury travel styling',
   },
   {
@@ -141,7 +141,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: 'E-COMMERCE',
     description: 'A business e-commerce site for industrial oil products and B2B ordering.',
     url: 'https://vardhanoil.com/',
-    image: 'https://img.rocket.new/generatedImages/rocket_gen_img_12ef72da1-1766508932092.png',
+    image: '/portfolio-15.png',
     alt: 'Industrial oil products website imagery',
   },
 ];

@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: 'Chirag Deol',
     images: [
       {
-        url: 'https://img.rocket.new/chirag-og.jpg',
+        url: '/chirag-og.png',
         width: 1200,
         height: 630,
         alt: 'Chirag Deol - Digital Excellence',

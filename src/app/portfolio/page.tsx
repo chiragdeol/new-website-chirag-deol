@@ -5,7 +5,7 @@ import PortfolioPage from '@/components/PortfolioPage';
 export default function PortfolioRoute() {
   return (
     <>
-      <Navbar activeSection="portfolio" />
+      <Navbar activeSection="portfolio" isDark={true} />
       <PortfolioPage />
     </>
   );

@@ -4,9 +4,10 @@ import Link from 'next/link';
 
 interface NavbarProps {
   activeSection: string;
+  isDark?: boolean;
 }
 
-export default function Navbar({ activeSection }: NavbarProps) {
+export default function Navbar({ activeSection, isDark = false }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuBarHovered, setMenuBarHovered] = useState(false);
@@ -40,7 +41,16 @@ export default function Navbar({ activeSection }: NavbarProps) {
     <>
       <nav
         className={`mdx-navbar ${scrolled ? 'scrolled' : ''}`}
-        style={{ padding: '1.8rem 5rem' }}
+        style={{ 
+          padding: scrolled ? '1rem clamp(1.25rem, 5vw, 5rem)' : '1.8rem clamp(1.25rem, 5vw, 5rem)',
+          zIndex: 100,
+          transition: 'all 0.3s ease-out',
+          ...(isDark && {
+            backgroundColor: scrolled ? 'rgba(10, 15, 23, 0.85)' : 'transparent',
+            backdropFilter: scrolled ? 'blur(20px)' : 'none',
+            borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.08)' : 'none',
+          })
+        }}
       >
         {/* Left: Logo */}
         <div className="flex items-center gap-8">
@@ -54,7 +64,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 className="font-display font-medium tracking-wider"
                 style={{
                   fontSize: '1.4rem',
-                  color: '#111822',
+                  color: isDark ? '#FCFCFD' : '#111822',
                   letterSpacing: '0.08em',
                 }}
               >
@@ -76,7 +86,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
               href={link.href}
               className="relative group"
               style={{
-                color: activeSection === link.id ? '#111822' : '#8a8f8d',
+                color: activeSection === link.id ? (isDark ? '#FCFCFD' : '#111822') : (isDark ? 'rgba(252,252,253,0.45)' : '#8a8f8d'),
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '1rem',
                 fontWeight: 400,
@@ -104,24 +114,39 @@ export default function Navbar({ activeSection }: NavbarProps) {
           {/* Let's Talk - desktop */}
           <Link
             href="/#contact"
-            className="hidden md:flex btn-cta"
-            style={{ padding: '1rem 2.4rem', textDecoration: 'none' }}
+            className="hidden md:flex items-center gap-2 group"
+            style={{
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '0.85rem',
+              fontWeight: 500,
+              color: isDark ? '#FCFCFD' : '#111822',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              transition: 'color 0.3s ease',
+            }}
           >
-            <div className="btn-bg" />
-            <span className="btn-text" style={{ fontSize: '0.85rem', letterSpacing: '0.1em' }}>
-              Let&apos;s Talk
-            </span>
-            <span className="btn-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
-            </span>
+            <span>Let&apos;s Talk</span>
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              style={{
+                transition: 'transform 0.4s cubic-bezier(0.625, 0.05, 0, 1)',
+              }}
+              className="group-hover:translate-x-1 group-hover:-translate-y-1"
+            >
+              <path d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
           </Link>
 
           {/* Divider */}
           <div
             className="hidden md:block w-px h-4"
-            style={{ backgroundColor: 'rgba(17,24,32,0.2)' }}
+            style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.15)' : 'rgba(17,24,32,0.2)' }}
           />
 
           {/* Hamburger */}
@@ -144,7 +169,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
               style={{
                 width: '36px',
                 height: '2px',
-                backgroundColor: '#111822',
+                backgroundColor: isDark ? '#FCFCFD' : '#111822',
                 transition: 'transform 0.6s cubic-bezier(0.625, 0.05, 0, 1)',
                 transform: menuOpen
                   ? 'translateY(6px) rotate(45deg)'
@@ -158,7 +183,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
               style={{
                 width: '36px',
                 height: '2px',
-                backgroundColor: '#111822',
+                backgroundColor: isDark ? '#FCFCFD' : '#111822',
                 transition: 'transform 0.6s cubic-bezier(0.625, 0.05, 0, 1)',
                 transform: menuOpen
                   ? 'translateY(-6px) rotate(-45deg)'
@@ -172,7 +197,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
       </nav>
 
       {/* Mobile/Full Menu Overlay */}
-      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`} style={{ padding: '2rem 3rem' }}>
+      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`} style={{ padding: '2rem 3rem', zIndex: 110 }}>
         {/* Close button */}
         <div className="flex justify-between items-center mb-16">
           <span
