@@ -22,7 +22,8 @@ export async function POST(request: Request) {
     let emailSent = true;
     try {
       await sendLeadEmail('contact', lead.payload as ContactLeadPayload);
-    } catch {
+    } catch (error) {
+      console.error('Failed to send contact email:', error);
       emailSent = false;
     }
 

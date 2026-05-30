@@ -19,7 +19,8 @@ export async function POST(request: Request) {
     let emailSent = true;
     try {
       await sendLeadEmail('chatbot', lead.payload as ChatbotLeadPayload);
-    } catch {
+    } catch (error) {
+      console.error('Failed to send chatbot email:', error);
       emailSent = false;
     }
 
