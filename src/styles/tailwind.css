@@ -453,21 +453,21 @@
     }
   }
 
-  /* ===== WHY / INDUSTRIES / SERVICES — CARD POLISH ===== */
+  /* ===== WHY / INDUSTRIES / SERVICES — CARD POLISH (Dark Mercury Theme) ===== */
   .card-why-root {
     position: relative;
     border-radius: 1.25rem;
-    border: 1px solid rgba(17, 24, 34, 0.11);
-    background: linear-gradient(165deg, #ffffff 0%, #faf8f6 52%, #f3eee8 100%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(180deg, #0d1117 0%, #070a0f 100%);
     padding: 1.75rem;
     isolation: isolate;
     transition:
       transform 0.55s var(--ease-mdx),
       box-shadow 0.55s var(--ease-mdx),
-      border-color 0.45s ease;
+      border-color 0.45s ease,
+      background 0.45s ease;
     box-shadow:
-      0 10px 32px rgba(17, 24, 34, 0.05),
-      0 4px 10px rgba(17, 24, 34, 0.02);
+      0 4px 16px rgba(0, 0, 0, 0.2);
   }
 
   .card-why-root::before {
@@ -477,17 +477,18 @@
     border-radius: inherit;
     opacity: 0;
     transition: opacity 0.55s ease;
-    background: radial-gradient(115% 90% at 8% -15%, rgba(255, 130, 0, 0.1), transparent 52%);
+    background: radial-gradient(115% 90% at 8% -15%, rgba(255, 130, 0, 0.12), transparent 52%);
     z-index: -1;
     pointer-events: none;
   }
 
   .card-why-root:hover {
     transform: translateY(-6px);
-    border-color: rgba(255, 130, 0, 0.32);
+    border-color: rgba(255, 130, 0, 0.4);
+    background: linear-gradient(180deg, rgba(255, 130, 0, 0.08) 0%, #070a0f 100%);
     box-shadow:
-      0 26px 56px rgba(17, 24, 34, 0.1),
-      0 14px 28px rgba(17, 24, 34, 0.04);
+      0 20px 40px rgba(255, 130, 0, 0.08),
+      0 8px 20px rgba(0, 0, 0, 0.3);
   }
 
   .card-why-root:hover::before {
@@ -504,6 +505,7 @@
   .card-why-root:hover .card-why-badge {
     transform: scale(1.06);
     border-color: rgba(255, 130, 0, 0.35);
+    background: rgba(255, 130, 0, 0.1);
   }
 
   .industry-card-inner {
@@ -514,15 +516,14 @@
       border-color 0.45s ease,
       background 0.55s ease;
     box-shadow:
-      0 10px 32px rgba(17, 24, 34, 0.04),
-      0 4px 10px rgba(17, 24, 34, 0.02);
+      0 4px 16px rgba(0, 0, 0, 0.2);
   }
 
   .industry-card-inner:hover {
     transform: translateY(-6px);
     box-shadow:
-      0 26px 60px rgba(17, 24, 34, 0.1),
-      0 14px 28px rgba(17, 24, 34, 0.05);
+      0 20px 40px rgba(0, 0, 0, 0.35),
+      0 8px 20px rgba(0, 0, 0, 0.2);
   }
 
   .industry-card-icon-wrap {
@@ -545,15 +546,15 @@
       box-shadow 0.6s var(--ease-mdx),
       border-color 0.45s ease;
     box-shadow:
-      0 22px 64px rgba(17, 24, 34, 0.08),
-      0 10px 24px rgba(17, 24, 34, 0.04);
+      0 12px 40px rgba(0, 0, 0, 0.3),
+      0 6px 16px rgba(0, 0, 0, 0.15);
   }
 
   .services-detail-shell::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(120deg, transparent 40%, rgba(255, 130, 0, 0.04) 50%, transparent 60%);
+    background: linear-gradient(120deg, transparent 40%, rgba(255, 130, 0, 0.06) 50%, transparent 60%);
     background-size: 200% 100%;
     animation: shimmer-slow 14s linear infinite;
     opacity: 0;
@@ -564,9 +565,9 @@
   .services-detail-shell:hover {
     transform: translateY(-3px);
     box-shadow:
-      0 32px 80px rgba(17, 24, 34, 0.12),
-      0 16px 40px rgba(17, 24, 34, 0.06);
-    border-color: rgba(255, 130, 0, 0.28) !important;
+      0 24px 60px rgba(0, 0, 0, 0.4),
+      0 12px 30px rgba(255, 130, 0, 0.08);
+    border-color: rgba(255, 130, 0, 0.35) !important;
   }
 
   .services-detail-shell:hover::after {
@@ -605,21 +606,20 @@
       border-color 0.45s ease,
       background 0.55s ease;
     box-shadow:
-      0 10px 32px rgba(17, 24, 34, 0.04),
-      0 4px 12px rgba(17, 24, 34, 0.02);
+      0 4px 16px rgba(0, 0, 0, 0.2);
   }
 
   .services-mini-card:not(.services-mini-card--active):hover {
     transform: translateY(-5px);
     box-shadow:
-      0 24px 48px rgba(17, 24, 34, 0.09),
-      0 10px 22px rgba(17, 24, 34, 0.04);
+      0 20px 40px rgba(0, 0, 0, 0.35),
+      0 8px 20px rgba(0, 0, 0, 0.2);
   }
 
   .services-mini-card--active {
     box-shadow:
-      0 20px 48px rgba(255, 130, 0, 0.18),
-      0 14px 32px rgba(17, 24, 34, 0.08);
+      0 16px 40px rgba(255, 130, 0, 0.15),
+      0 8px 20px rgba(0, 0, 0, 0.25);
   }
 
   @media (prefers-reduced-motion: reduce) {
