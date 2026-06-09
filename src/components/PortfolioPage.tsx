@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { portfolioProjects } from '@/lib/portfolio-projects';
 import PortfolioHero from './PortfolioHero';
@@ -17,7 +17,6 @@ function ProjectCard({
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const el = cardRef.current;
@@ -40,166 +39,44 @@ function ProjectCard({
       ref={cardRef}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(50px)',
-        transition: `opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94) ${index * 0.06}s, transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94) ${index * 0.06}s`,
+        transform: visible ? 'translateY(0)' : 'translateY(40px)',
+        transition: `opacity 0.65s cubic-bezier(0.625,0.05,0,1) ${index * 0.07}s, transform 0.65s cubic-bezier(0.625,0.05,0,1) ${index * 0.07}s`,
       }}
     >
-      <article
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        style={{
-          overflow: 'hidden',
-          borderRadius: '1.25rem',
-          border: `1px solid ${hovered ? 'rgba(255,130,0,0.25)' : 'rgba(255,255,255,0.06)'}`,
-          background: hovered
-            ? 'rgba(255,255,255,0.03)'
-            : 'rgba(255,255,255,0.015)',
-          transition: 'all 0.5s cubic-bezier(0.25,0.46,0.45,0.94)',
-          cursor: 'pointer',
-          boxShadow: hovered
-            ? '0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,130,0,0.08)'
-            : '0 4px 20px rgba(0,0,0,0.2)',
-        }}
+      <Link
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="project-grid__item"
       >
-        {/* ── Large image area ── */}
-        <div
-          style={{
-            position: 'relative',
-            width: '100%',
-            aspectRatio: '16 / 9',
-            overflow: 'hidden',
-            background: '#0a0e14',
-          }}
-        >
+        <div className="project-grid__image-wrapper">
           <img
             src={project.image}
             alt={project.alt || project.title}
             loading="lazy"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-              transition: 'transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94)',
-              transform: hovered ? 'scale(1.04)' : 'scale(1)',
-            }}
           />
-          {/* Gradient overlay on hover */}
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: hovered
-                ? 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)'
-                : 'linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 40%)',
-              transition: 'background 0.5s ease',
-              pointerEvents: 'none',
-            }}
-          />
-          {/* Category badge */}
-          <span
-            style={{
-              position: 'absolute',
-              top: '1.1rem',
-              left: '1.1rem',
-              borderRadius: '2rem',
-              background: 'rgba(0,0,0,0.55)',
-              backdropFilter: 'blur(14px)',
-              padding: '0.35rem 1rem',
-              fontSize: '0.68rem',
-              fontWeight: 600,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.75)',
-              border: '1px solid rgba(255,255,255,0.08)',
-            }}
-          >
-            {project.category}
+        </div>
+
+        <div className="project-grid__service">
+          {project.category}
+        </div>
+
+        <div className="project-grid__link">
+          <span className="project-grid__link-text">
+            {project.title}
+          </span>
+          <span className="project-grid__link-arrow-wrapper">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
+              <path d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
           </span>
         </div>
-
-        {/* ── Content area ── */}
-        <div
-          style={{
-            padding: 'clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 3vw, 2rem)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.6rem',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '1rem',
-              flexWrap: 'wrap',
-            }}
-          >
-            <h2
-              style={{
-                fontFamily: 'var(--font-display), sans-serif',
-                fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)',
-                fontWeight: 600,
-                color: '#FCFCFD',
-                margin: 0,
-                letterSpacing: '-0.01em',
-                lineHeight: 1.2,
-              }}
-            >
-              {project.title}
-            </h2>
-            <Link
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.45rem',
-                borderRadius: '3rem',
-                background: hovered
-                  ? 'rgba(255,130,0,0.12)'
-                  : 'rgba(255,255,255,0.05)',
-                border: `1px solid ${hovered ? 'rgba(255,130,0,0.35)' : 'rgba(255,255,255,0.1)'}`,
-                padding: '0.5rem 1.2rem',
-                fontSize: '0.78rem',
-                fontWeight: 500,
-                color: '#FCFCFD',
-                textDecoration: 'none',
-                letterSpacing: '0.04em',
-                transition: 'all 0.35s ease',
-                flexShrink: 0,
-              }}
-            >
-              Visit
-              <svg
-                width="11"
-                height="11"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-              >
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
-            </Link>
-          </div>
-
-          <p
-            style={{
-              fontFamily: 'Inter, var(--font-body), sans-serif',
-              fontSize: '0.88rem',
-              lineHeight: 1.65,
-              color: 'rgba(255,255,255,0.4)',
-              margin: 0,
-              maxWidth: '640px',
-            }}
-          >
-            {project.description}
-          </p>
-        </div>
-      </article>
+      </Link>
     </div>
   );
 }
@@ -207,7 +84,6 @@ function ProjectCard({
 /* ── Main Portfolio Page ── */
 export default function PortfolioPage() {
   const [activeCategory, setActiveCategory] = useState('ALL');
-  const [hoveredCat, setHoveredCat] = useState<string | null>(null);
 
   const filteredProjects =
     activeCategory === 'ALL'
@@ -226,54 +102,61 @@ export default function PortfolioPage() {
       {/* Hero */}
       <PortfolioHero />
 
-      {/* Filter + Stacked Projects */}
+      {/* Filter + Grid */}
       <section
         style={{
-          maxWidth: '72rem',
+          maxWidth: '76rem',
           margin: '0 auto',
           padding:
-            'clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2.5rem) clamp(4rem, 8vw, 7rem)',
+            'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2.5rem) clamp(4rem, 8vw, 7rem)',
         }}
       >
-        {/* Category filter pills */}
+        {/* ── Category filter pills — MDX.so style ── */}
         <div
           style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '0.55rem',
-            marginBottom: '3rem',
-            paddingBottom: '1.5rem',
-            borderBottom: '1px solid rgba(255,255,255,0.06)',
+            gap: '0.6rem',
+            marginBottom: 'clamp(2.5rem, 5vw, 4rem)',
           }}
         >
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
-            const isHov = hoveredCat === cat;
             return (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                onMouseEnter={() => setHoveredCat(cat)}
-                onMouseLeave={() => setHoveredCat(null)}
                 style={{
                   borderRadius: '3rem',
-                  padding: '0.5rem 1.3rem',
-                  fontSize: '0.78rem',
+                  padding: '0.6rem 1.5rem',
+                  fontSize: '0.82rem',
                   fontFamily: 'Inter, sans-serif',
                   fontWeight: 500,
-                  letterSpacing: '0.08em',
+                  letterSpacing: '0.04em',
                   cursor: 'pointer',
-                  transition: 'all 0.3s cubic-bezier(0.25,0.46,0.45,0.94)',
+                  transition: 'all 0.3s ease',
                   border: isActive
-                    ? '1px solid rgba(255,130,0,0.5)'
-                    : '1px solid rgba(255,255,255,0.08)',
-                  background: isActive
-                    ? 'rgba(255,130,0,0.12)'
-                    : isHov
-                      ? 'rgba(255,255,255,0.04)'
-                      : 'transparent',
-                  color: isActive ? '#ffffff' : 'rgba(255,255,255,0.45)',
+                    ? '1.5px solid #ffffff'
+                    : '1.5px solid rgba(255,255,255,0.2)',
+                  background: isActive ? '#ffffff' : 'transparent',
+                  color: isActive ? '#000000' : 'rgba(255,255,255,0.6)',
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) {
+                    (e.currentTarget as HTMLButtonElement).style.borderColor =
+                      'rgba(255,255,255,0.5)';
+                    (e.currentTarget as HTMLButtonElement).style.color =
+                      '#ffffff';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) {
+                    (e.currentTarget as HTMLButtonElement).style.borderColor =
+                      'rgba(255,255,255,0.2)';
+                    (e.currentTarget as HTMLButtonElement).style.color =
+                      'rgba(255,255,255,0.6)';
+                  }
                 }}
               >
                 {cat}
@@ -282,29 +165,8 @@ export default function PortfolioPage() {
           })}
         </div>
 
-        {/* Project count */}
-        <div
-          style={{
-            fontSize: '0.72rem',
-            fontFamily: 'Inter, sans-serif',
-            color: 'rgba(255,255,255,0.25)',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            marginBottom: '2rem',
-          }}
-        >
-          {filteredProjects.length} Project
-          {filteredProjects.length !== 1 ? 's' : ''}
-        </div>
-
-        {/* Stacked full-width project cards */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'clamp(1.5rem, 3vw, 2.5rem)',
-          }}
-        >
+        {/* ── 2-column project grid — MDX.so style ── */}
+        <div className="projects-grid-mdx">
           {filteredProjects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}
@@ -355,6 +217,135 @@ export default function PortfolioPage() {
         </svg>
         WhatsApp
       </a>
+
+      {/* Embedded CSS matching MDX.so styling */}
+      <style>{`
+        /* ── 2-column project grid ── */
+        .projects-grid-mdx {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: clamp(2rem, 5vw, 5.6rem);
+          margin-bottom: 5.8rem;
+        }
+
+        @media (max-width: 768px) {
+          .projects-grid-mdx {
+            grid-template-columns: 1fr !important;
+            gap: 3.8rem !important;
+          }
+        }
+
+        /* ── Card container link ── */
+        .project-grid__item {
+          display: block;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        /* ── Image area ── */
+        .project-grid__image-wrapper {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 906 / 510;
+          overflow: hidden;
+          border-radius: 0.75rem;
+          background: #0a0e14;
+          margin-bottom: clamp(1.2rem, 2vw, 2.3rem);
+        }
+
+        .project-grid__image-wrapper img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+          transition: transform 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+        }
+
+        .project-grid__item:hover .project-grid__image-wrapper img {
+          transform: scale(1.04);
+        }
+
+        /* ── Category text ── */
+        .project-grid__service {
+          color: #8c8c8c;
+          font-family: var(--font-body), Inter, sans-serif;
+          font-size: clamp(0.75rem, 1.2vw, 1rem);
+          font-weight: 500;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          margin-bottom: clamp(0.6rem, 1vw, 0.9rem);
+          line-height: normal;
+        }
+
+        /* ── Title and Link row ── */
+        .project-grid__link {
+          display: flex;
+          align-items: center;
+          gap: clamp(1rem, 2vw, 2.4rem);
+          width: fit-content;
+        }
+
+        .project-grid__link-text {
+          color: #fcfcfd;
+          font-family: var(--font-display), Aventa, sans-serif;
+          font-size: clamp(1.3rem, 2.8vw, 2.2rem);
+          font-weight: 500;
+          line-height: normal;
+          letter-spacing: 0.6px;
+          transition: opacity 0.35s cubic-bezier(0.625, 0.05, 0, 1);
+        }
+
+        .project-grid__item:hover .project-grid__link-text {
+          opacity: 0.65;
+        }
+
+        /* ── Arrow icon sliding animation ── */
+        .project-grid__link-arrow-wrapper {
+          --arrow-size: 1.4rem;
+          width: var(--arrow-size);
+          height: var(--arrow-size);
+          overflow: hidden;
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        @media (min-width: 1024px) {
+          .project-grid__link-arrow-wrapper {
+            --arrow-size: 2.2rem;
+          }
+        }
+
+        .project-grid__link-arrow-wrapper svg {
+          width: 100%;
+          height: 100%;
+          color: #ffffff;
+          /* Drop-shadow offset exactly matches current arrow size, shifted to bottom-left */
+          filter: drop-shadow(
+            calc(-1 * var(--arrow-size)) 
+            var(--arrow-size) 
+            0px 
+            #ff6711
+          );
+          -webkit-filter: drop-shadow(
+            calc(-1 * var(--arrow-size)) 
+            var(--arrow-size) 
+            0px 
+            #ff6711
+          );
+          transition: transform 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+        }
+
+        /* Slide arrow diagonally on hover to reveal the orange drop shadow */
+        .project-grid__item:hover .project-grid__link-arrow-wrapper svg {
+          transform: translate(var(--arrow-size), calc(-1 * var(--arrow-size)));
+        }
+      `}</style>
     </main>
   );
 }
