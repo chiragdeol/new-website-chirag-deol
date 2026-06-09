@@ -191,16 +191,14 @@ const industries = [
 export default function Industries() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const reveals = entry.target.querySelectorAll('.reveal');
-            reveals.forEach((el, i) => {
-              setTimeout(() => el.classList.add('visible'), i * 80);
-            });
+            setIsVisible(true);
           }
         });
       },
@@ -232,7 +230,7 @@ export default function Industries() {
       />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-14 reveal md:mb-[4rem]">
+        <div className={`mb-14 reveal md:mb-[4rem] ${isVisible ? 'visible' : ''}`}>
           <div className="section-label">Industries We Serve</div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <h2
@@ -258,7 +256,7 @@ export default function Industries() {
           {industries?.map((industry, i) => (
             <div
               key={industry?.id}
-              className="reveal"
+              className={`reveal ${isVisible ? 'visible' : ''}`}
               style={{ transitionDelay: `${i * 60}ms` }}
               onMouseEnter={() => setHoveredId(industry?.id)}
               onMouseLeave={() => setHoveredId(null)}
@@ -318,40 +316,33 @@ export default function Industries() {
                   {industry?.desc}
                 </p>
 
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center justify-start gap-3 mt-4">
                   <div
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '0.4rem',
                       fontFamily: 'var(--font-body), sans-serif',
-                      fontSize: '0.74rem',
-                      fontWeight: 600,
-                      color: hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.4)',
-                      transition: 'color 0.3s ease-out',
+                      fontSize: '0.72rem',
+                      fontWeight: 500,
                       letterSpacing: '0.04em',
+                      color: hoveredId === industry?.id ? '#ffffff' : 'rgba(255,255,255,0.5)',
+                      padding: '0.35rem 0.8rem',
+                      border: `1px solid ${hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.08)'}`,
+                      borderRadius: '2rem',
+                      background: hoveredId === industry?.id ? industry?.bg : 'rgba(255,255,255,0.02)',
+                      transition: 'all 0.3s ease-out',
                     }}
                   >
                     <span
                       style={{
-                        width: '6px',
-                        height: '6px',
+                        width: '5px',
+                        height: '5px',
                         borderRadius: '50%',
                         background: hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.4)',
                         transition: 'background 0.3s ease-out',
                       }}
                     />
-                    {industry?.projects} Projects
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-body), sans-serif',
-                      fontSize: '0.72rem',
-                      letterSpacing: '0.04em',
-                      color: hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.4)',
-                      opacity: 0.95,
-                    }}
-                  >
                     {industry?.focus}
                   </div>
                 </div>

@@ -1,5 +1,8 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const ThreeMoon = dynamic(() => import('./ThreeMoon'), { ssr: false });
 
 interface ServicesProps {
   onScrollTo: (id: string) => void;
@@ -148,16 +151,14 @@ export default function Services({ onScrollTo }: ServicesProps) {
   const [activeService, setActiveService] = useState<number>(0);
   const [pillPositions, setPillPositions] = useState<{ x: number; y: number }[]>([]);
   const [orbitRadius, setOrbitRadius] = useState(200);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const reveals = entry.target.querySelectorAll('.reveal, .reveal-left');
-            reveals.forEach((el, i) => {
-              setTimeout(() => el.classList.add('visible'), i * 80);
-            });
+            setIsVisible(true);
           }
         });
       },
@@ -226,7 +227,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20">
         {/* Header */}
-        <div className="mb-14 reveal md:mb-16">
+        <div className={`mb-14 reveal md:mb-16 ${isVisible ? 'visible' : ''}`}>
           <div className="section-label">What We Do</div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <h2
@@ -249,91 +250,38 @@ export default function Services({ onScrollTo }: ServicesProps) {
 
         {/* Sphere + Pills Visual */}
         <div
-          className="relative mx-auto flex w-full max-w-[min(100%,520px)] items-center justify-center reveal sm:max-w-none"
+          className={`relative mx-auto flex w-full max-w-[min(100%,520px)] items-center justify-center reveal sm:max-w-none ${isVisible ? 'visible' : ''}`}
           style={{
             minHeight: 'clamp(340px, 92vw, 780px)',
             height: 'clamp(360px, 85vmin, 780px)',
             marginBottom: 'clamp(2rem, 5vw, 5.5rem)',
           }}
         >
-          {/* Sphere */}
+          {/* Sphere (Interactive 3D glowing Moon) */}
           <div
             className="absolute sphere-float-wrap"
             style={{
               top: '50%',
               left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: 'clamp(180px, 46vmin, 400px)',
+              height: 'clamp(180px, 46vmin, 400px)',
               zIndex: 2,
             }}
           >
-            {/* Fuzzy glowing sphere — inner layers rotate slowly (reference-style motion) */}
+            <ThreeMoon />
+            {/* Soft background glow to blend WebGL borders and enhance atmosphere */}
             <div
-              className="sphere-rotate-inner"
               style={{
-                width: 'clamp(160px, 42vmin, 380px)',
-                height: 'clamp(160px, 42vmin, 380px)',
+                position: 'absolute',
+                inset: '-20%',
                 borderRadius: '50%',
-                position: 'relative',
+                background: 'radial-gradient(circle, rgba(255,130,0,0.26) 0%, rgba(255,130,0,0.08) 45%, transparent 70%)',
+                filter: 'blur(30px)',
+                pointerEvents: 'none',
+                zIndex: 1,
               }}
-            >
-              {/* Core glow */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: '15%',
-                  borderRadius: '50%',
-                  background:
-                    'radial-gradient(circle at 38% 32%, #f7efe6 0%, #e7dacb 42%, #d3bea8 70%, #b89d84 100%)',
-                  filter: 'blur(2px)',
-                }}
-              />
-              {/* Fuzzy outer layer */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  borderRadius: '50%',
-                  background:
-                    'radial-gradient(circle at 38% 32%, rgba(255,255,255,0.92) 0%, rgba(236,225,211,0.78) 35%, rgba(205,183,159,0.45) 62%, transparent 86%)',
-                  filter: 'blur(10px)',
-                }}
-              />
-              {/* Texture noise layer */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: '5%',
-                  borderRadius: '50%',
-                  background: `
-                    radial-gradient(circle at 30% 25%, rgba(255,255,255,0.92) 0%, transparent 42%),
-                    radial-gradient(circle at 70% 70%, rgba(150,120,90,0.35) 0%, transparent 45%),
-                    radial-gradient(circle at 50% 50%, rgba(224,203,182,0.55) 0%, transparent 65%)
-                  `,
-                  filter: 'blur(4px)',
-                }}
-              />
-              {/* Fluffy edge */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: '-8%',
-                  borderRadius: '50%',
-                  background:
-                    'radial-gradient(circle at 50% 50%, transparent 45%, rgba(220,194,165,0.2) 62%, rgba(194,164,134,0.14) 75%, transparent 90%)',
-                  filter: 'blur(12px)',
-                }}
-              />
-              {/* Outer glow halo */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: '-25%',
-                  borderRadius: '50%',
-                  background:
-                    'radial-gradient(circle at 50% 50%, rgba(216,185,151,0.22) 0%, rgba(237,220,199,0.08) 52%, transparent 72%)',
-                  filter: 'blur(20px)',
-                }}
-              />
-            </div>
+            />
           </div>
 
           {/* Floating Pills */}
@@ -454,7 +402,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
 
         {/* Active Service Detail Card */}
         <div
-          className="reveal services-detail-shell"
+          className={`reveal services-detail-shell ${isVisible ? 'visible' : ''}`}
           style={{
             borderRadius: '2rem',
             padding: 'clamp(2rem, 5vw, 3rem)',
@@ -559,7 +507,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
           {services.map((service, i) => (
             <div
               key={service.id}
-              className={`reveal cursor-pointer services-mini-card ${
+              className={`reveal cursor-pointer services-mini-card ${isVisible ? 'visible' : ''} ${
                 activeService === i ? 'services-mini-card--active' : ''
               }`}
               style={{

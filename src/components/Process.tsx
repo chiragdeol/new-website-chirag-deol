@@ -128,16 +128,14 @@ const steps = [
 export default function Process() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState<number>(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const reveals = entry.target.querySelectorAll('.reveal');
-            reveals.forEach((el, i) => {
-              setTimeout(() => el.classList.add('visible'), i * 100);
-            });
+            setIsVisible(true);
           }
         });
       },
@@ -169,7 +167,7 @@ export default function Process() {
       />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-16 reveal">
+        <div className={`mb-16 reveal ${isVisible ? 'visible' : ''}`}>
           <div className="section-label">How We Work</div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <h2
@@ -195,7 +193,7 @@ export default function Process() {
           {/* Left: Step List */}
           <div className="flex flex-col gap-2">
             {steps?.map((step, i) => (
-              <div key={step?.number} className="reveal" style={{ transitionDelay: `${i * 80}ms` }}>
+              <div key={step?.number} className={`reveal ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${i * 80}ms` }}>
                 <button
                   onClick={() => setActiveStep(i)}
                   className="w-full text-left"
@@ -289,7 +287,7 @@ export default function Process() {
 
           {/* Right: Active Step Detail */}
           <div
-            className="reveal lg:sticky lg:top-32 self-start"
+            className={`reveal lg:sticky lg:top-32 self-start ${isVisible ? 'visible' : ''}`}
             style={{ transitionDelay: '300ms' }}
           >
             <div

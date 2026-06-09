@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import Technologies from '@/components/Technologies';
 import Stats from '@/components/Stats';
 import Services from '@/components/Services';
 import Industries from '@/components/Industries';
@@ -103,6 +104,9 @@ export default function HomePage() {
 
       {/* About / Why Choose Me */}
       <About onScrollTo={scrollTo} />
+
+      {/* Technologies We Work With */}
+      <Technologies />
 
       {/* Stats */}
       <Stats />
