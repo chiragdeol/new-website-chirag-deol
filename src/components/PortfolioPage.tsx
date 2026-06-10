@@ -181,10 +181,11 @@ export default function PortfolioPage() {
         href="https://wa.me/919870903026?text=Hello!%20I%20want%20to%20discuss%20a%20portfolio%20project."
         target="_blank"
         rel="noreferrer"
+        className="floating-whatsapp-portfolio"
         style={{
           position: 'fixed',
-          left: '1.5rem',
-          bottom: '1.5rem',
+          left: '0.75rem',
+          bottom: '1rem',
           zIndex: 50,
           display: 'flex',
           alignItems: 'center',
@@ -232,6 +233,14 @@ export default function PortfolioPage() {
           .projects-grid-mdx {
             grid-template-columns: 1fr !important;
             gap: 3.8rem !important;
+          }
+        }
+
+        /* ── Floating WhatsApp Responsive Spacing ── */
+        @media (min-width: 640px) {
+          .floating-whatsapp-portfolio {
+            bottom: 2rem !important;
+            left: 2rem !important;
           }
         }
 
