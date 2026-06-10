@@ -40,7 +40,7 @@ export default function PortfolioFooter() {
       style={{
         background: '#070c12',
         borderTop: '1px solid rgba(255,255,255,0.06)',
-        padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem) 2.5rem',
+        padding: 'clamp(2rem, 4.5vw, 3.5rem) clamp(1.5rem, 5vw, 5rem) 2.5rem',
         position: 'relative',
         overflow: 'hidden',
       }}
