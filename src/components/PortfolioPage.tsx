@@ -105,10 +105,10 @@ export default function PortfolioPage() {
       {/* Filter + Grid */}
       <section
         style={{
-          maxWidth: '76rem',
+          maxWidth: '92rem',
           margin: '0 auto',
           padding:
-            'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2.5rem) clamp(4rem, 8vw, 7rem)',
+            'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 2.5vw, 1.5rem) clamp(4rem, 8vw, 7rem)',
         }}
       >
         {/* ── Category filter pills — MDX.so style ── */}
