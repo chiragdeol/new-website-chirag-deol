@@ -36,7 +36,7 @@ export default function Contact() {
 
   const serviceOptions = [
     'Website Development',
-    'Mobile App Development',
+    'Custom Web Application',
     'WordPress Website',
     'Real Estate Website',
     'Ecommerce Development',

@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react';
 const techList = [
   {
     name: 'WordPress',
-    desc: 'Scalable custom themes, headless setups, and robust enterprise content ecosystems.',
     color: '#21759B',
     bg: 'rgba(33, 117, 155, 0.06)',
     border: 'rgba(33, 117, 155, 0.2)',
@@ -15,22 +14,31 @@ const techList = [
     ),
   },
   {
-    name: 'React Native',
-    desc: 'High-performance cross-platform iOS and Android mobile application builds.',
-    color: '#61DAFB',
-    bg: 'rgba(97, 218, 251, 0.05)',
-    border: 'rgba(97, 218, 251, 0.2)',
+    name: 'Shopify',
+    color: '#96BF48',
+    bg: 'rgba(150, 191, 72, 0.06)',
+    border: 'rgba(150, 191, 72, 0.2)',
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-3.6-6.4c.15-.36.33-.71.55-1.03l-.04.04c-.2.27-.36.56-.51.86-.18.36-.26.74-.26 1.13 0 .75.36 1.46.99 1.89.2.14.43.25.67.33l-.11-.06c-.36-.21-.66-.51-.88-.87-.22-.36-.33-.76-.33-1.18 0-.35.07-.69.21-1.02.13-.3.32-.58.56-.83l-.05.04c-.31.33-.56.71-.74 1.13-.19.43-.28.89-.28 1.36 0 1.05.51 2.02 1.37 2.62.33.23.71.4 1.11.51l-.22-.11a2.89 2.89 0 01-1.52-2.52c0-.52.12-1.03.35-1.5zm8.16 2.62c.86-.6 1.37-1.57 1.37-2.62 0-.47-.09-.93-.28-1.36a3.86 3.86 0 00-.74-1.13l-.05-.04c.24.25.43.53.56.83.14.33.21.67.21 1.02 0 .42-.11.82-.33 1.18-.22.36-.52.66-.88.87l-.11.06c.24-.08.47-.19.67-.33.63-.43.99-1.14.99-1.89 0-.39-.08-.77-.26-1.13a2.91 2.91 0 00-.51-.86l-.04-.04c.22.32.4.67.55 1.03.23.47.35.98.35 1.5 0 .97-.5 1.86-1.31 2.37l-.11.06.11-.06zM12 9.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5z"/>
+        <path d="M19.043 5.485c-.092-.272-.34-.455-.628-.455h-2.12v-.895c0-.496-.403-.9-.9-.9h-6.79c-.497 0-.9.404-.9.9v.895h-2.12c-.288 0-.536.183-.628.455L3.107 10.98a1.002 1.002 0 00.95 1.321h1.125v7.7c0 .553.447 1 1 1h11.636c.553 0 1-.447 1-1v-7.7h1.125c.677 0 1.144-.707.95-1.321L19.043 5.485zm-9.543-1.35h4.99v.895H9.5V4.135z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'Webflow',
+    color: '#4353FF',
+    bg: 'rgba(67, 83, 255, 0.06)',
+    border: 'rgba(67, 83, 255, 0.2)',
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22.012 3H16.89a.63.63 0 00-.512.247L12.35 8.92a.63.63 0 000 .77l4.028 5.674c.123.173.341.247.512.247h5.122c.453 0 .76-.47.512-.865L18.496 9.305a.63.63 0 010-.77l4.028-5.673c.248-.394-.059-.865-.512-.865zm-15.13 0H1.76c-.453 0-.76.47-.512.865l4.028 5.673c.123.173.123.493 0 .666L1.248 15.877c-.248.395.059.865.512.865H6.88c.17 0 .389-.074.512-.247l4.028-5.674a.63.63 0 000-.77L7.392 3.247A.63.63 0 006.88 3z" />
       </svg>
     ),
   },
   {
     name: 'Laravel',
-    desc: 'Robust APIs, enterprise backend development, and secure SaaS database architectures.',
     color: '#FF2D20',
-    bg: 'rgba(255, 45, 32, 0.05)',
+    bg: 'rgba(255, 45, 32, 0.06)',
     border: 'rgba(255, 45, 32, 0.2)',
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -40,21 +48,24 @@ const techList = [
   },
   {
     name: 'React',
-    desc: 'Dynamic, highly interactive SPAs, clean reusable UI components, and state logic.',
     color: '#61DAFB',
-    bg: 'rgba(97, 218, 251, 0.05)',
+    bg: 'rgba(97, 218, 251, 0.06)',
     border: 'rgba(97, 218, 251, 0.2)',
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-13.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm0 5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm0 5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/>
+      <svg width="32" height="32" viewBox="-11.5 -10.23174 23 20.46348" fill="currentColor">
+        <circle cx="0" cy="0" r="2.05" />
+        <g stroke="currentColor" strokeWidth="1" fill="none">
+          <ellipse rx="11" ry="4.2" />
+          <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+          <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+        </g>
       </svg>
     ),
   },
   {
     name: 'Next.js',
-    desc: 'Production-ready SSR, static optimization, and SEO-tuned Next.js app architectures.',
     color: '#FFFFFF',
-    bg: 'rgba(255, 255, 255, 0.04)',
+    bg: 'rgba(255, 255, 255, 0.05)',
     border: 'rgba(255, 255, 255, 0.15)',
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
@@ -64,7 +75,6 @@ const techList = [
   },
   {
     name: 'TypeScript',
-    desc: 'Type-safe interface contracts, structured coding systems, and bug-preventative design.',
     color: '#3178C6',
     bg: 'rgba(49, 120, 198, 0.06)',
     border: 'rgba(49, 120, 198, 0.2)',
@@ -75,22 +85,9 @@ const techList = [
     ),
   },
   {
-    name: 'Node.js',
-    desc: 'High-concurrency microservices, API servers, streaming endpoints, and custom toolkits.',
-    color: '#339933',
-    bg: 'rgba(51, 153, 51, 0.05)',
-    border: 'rgba(51, 153, 51, 0.2)',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm2.25 15h-1.5V11.5h-1.5V10h3v5zm-1.5-6.5A1.25 1.25 0 1114 9.25 1.25 1.25 0 0112.75 10.5z"/>
-      </svg>
-    ),
-  },
-  {
     name: 'Tailwind CSS',
-    desc: 'Clean utility classes, responsive UI grids, and high-performance design-system tokens.',
     color: '#38BDF8',
-    bg: 'rgba(56, 189, 248, 0.05)',
+    bg: 'rgba(56, 189, 248, 0.06)',
     border: 'rgba(56, 189, 248, 0.2)',
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
@@ -180,95 +177,69 @@ export default function Technologies() {
         </div>
 
         {/* Tech Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 justify-center">
           {techList.map((tech, i) => {
             const isHovered = hoveredIndex === i;
             return (
               <div
                 key={tech.name}
                 className={`reveal ${isVisible ? 'visible' : ''}`}
-                style={{ transitionDelay: `${i * 60}ms` }}
+                style={{ transitionDelay: `${i * 40}ms` }}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div
                   style={{
-                    padding: '2.2rem',
+                    padding: '1.8rem 1.2rem',
                     borderRadius: '1.25rem',
-                    border: `1px solid ${isHovered ? tech.color : 'rgba(255,255,255,0.06)'}`,
+                    border: `1px solid ${isHovered ? tech.color : 'rgba(255,255,255,0.05)'}`,
                     background: isHovered 
                       ? `linear-gradient(180deg, ${tech.bg} 0%, #0a0f18 100%)` 
                       : 'linear-gradient(180deg, #0d1117 0%, #070a0f 100%)',
                     boxShadow: isHovered 
-                      ? `0 16px 40px ${tech.bg}, 0 4px 16px rgba(0,0,0,0.2)` 
-                      : '0 4px 16px rgba(0,0,0,0.2)',
-                    transition: 'all 0.5s cubic-bezier(0.625, 0.05, 0, 1)',
-                    height: '100%',
+                      ? `0 12px 32px ${tech.bg}, 0 4px 12px rgba(0,0,0,0.15)` 
+                      : '0 4px 12px rgba(0,0,0,0.15)',
+                    transition: 'all 0.4s cubic-bezier(0.625, 0.05, 0, 1)',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '1rem',
+                    height: '100%',
                   }}
                 >
-                  <div>
-                    {/* Brand Icon */}
-                    <div
-                      style={{
-                        width: '3.25rem',
-                        height: '3.25rem',
-                        borderRadius: '0.9rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: isHovered ? tech.color : 'rgba(255,255,255,0.55)',
-                        background: isHovered ? tech.bg : 'rgba(255,255,255,0.02)',
-                        border: `1px solid ${isHovered ? tech.border : 'rgba(255,255,255,0.08)'}`,
-                        marginBottom: '1.75rem',
-                        transition: 'all 0.3s ease-out',
-                        transform: isHovered ? 'scale(1.05) rotate(-3deg)' : 'scale(1)',
-                      }}
-                    >
-                      {tech.icon}
-                    </div>
-
-                    {/* Brand Name */}
-                    <h3
-                      style={{
-                        fontFamily: 'var(--font-display), sans-serif',
-                        fontSize: '1.35rem',
-                        fontWeight: 600,
-                        color: '#ffffff',
-                        marginBottom: '0.6rem',
-                        letterSpacing: '0.01em',
-                      }}
-                    >
-                      {tech.name}
-                    </h3>
-
-                    {/* Description */}
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-body), sans-serif',
-                        fontSize: '0.86rem',
-                        color: isHovered ? 'rgba(255,255,255,0.72)' : 'rgba(255,255,255,0.48)',
-                        lineHeight: 1.65,
-                        transition: 'color 0.3s ease-out',
-                      }}
-                    >
-                      {tech.desc}
-                    </p>
-                  </div>
-
-                  {/* Visual Glow Indicator */}
+                  {/* Brand Icon */}
                   <div
                     style={{
-                      height: '2px',
-                      width: isHovered ? '100%' : '0%',
-                      background: tech.color,
-                      boxShadow: `0 0 10px ${tech.color}`,
-                      transition: 'width 0.4s ease-out',
-                      marginTop: '2rem',
+                      width: '3.5rem',
+                      height: '3.5rem',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: isHovered ? tech.color : 'rgba(255,255,255,0.6)',
+                      background: isHovered ? tech.bg : 'rgba(255,255,255,0.02)',
+                      border: `1px solid ${isHovered ? tech.border : 'rgba(255,255,255,0.06)'}`,
+                      transition: 'all 0.3s ease-out',
+                      transform: isHovered ? 'scale(1.1) rotate(5deg)' : 'scale(1)',
                     }}
-                  />
+                  >
+                    {tech.icon}
+                  </div>
+
+                  {/* Brand Name */}
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-body), sans-serif',
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      color: isHovered ? '#ffffff' : 'rgba(255,255,255,0.7)',
+                      transition: 'color 0.3s ease',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {tech.name}
+                  </span>
                 </div>
               </div>
             );

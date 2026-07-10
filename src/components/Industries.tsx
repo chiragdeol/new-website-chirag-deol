@@ -252,103 +252,73 @@ export default function Industries() {
         </div>
 
         {/* Industries Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-          {industries?.map((industry, i) => (
-            <div
-              key={industry?.id}
-              className={`reveal ${isVisible ? 'visible' : ''}`}
-              style={{ transitionDelay: `${i * 60}ms` }}
-              onMouseEnter={() => setHoveredId(industry?.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 justify-center">
+          {industries?.map((industry, i) => {
+            const isHovered = hoveredId === industry?.id;
+            return (
               <div
-                className="industry-card-inner group"
-                style={{
-                  padding: '2rem',
-                  borderRadius: '1.2rem',
-                  border: `1px solid ${hoveredId === industry?.id ? industry?.border : 'rgba(255,255,255,0.06)'}`,
-                  background:
-                    hoveredId === industry?.id
-                      ? `linear-gradient(180deg, ${industry?.bg} 0%, #0a0f18 100%)`
-                      : 'linear-gradient(180deg, #0d1117 0%, #070a0f 100%)',
-                  cursor: 'default',
-                  height: '100%',
-                }}
+                key={industry?.id}
+                className={`reveal ${isVisible ? 'visible' : ''}`}
+                style={{ transitionDelay: `${i * 40}ms` }}
+                onMouseEnter={() => setHoveredId(industry?.id)}
+                onMouseLeave={() => setHoveredId(null)}
               >
-                {/* Icon */}
                 <div
-                  className="industry-card-icon-wrap w-12 h-12 rounded-xl mb-5 flex items-center justify-center transition-colors duration-300"
                   style={{
-                    background:
-                      hoveredId === industry?.id ? industry?.bg : 'rgba(255,255,255,0.03)',
-                    border: `1px solid ${hoveredId === industry?.id ? industry?.border : 'rgba(255,255,255,0.08)'}`,
-                    color: hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.5)',
+                    padding: '1.8rem 1.2rem',
+                    borderRadius: '1.25rem',
+                    border: `1px solid ${isHovered ? industry?.border : 'rgba(255,255,255,0.05)'}`,
+                    background: isHovered 
+                      ? `linear-gradient(180deg, ${industry?.bg} 0%, #0a0f18 100%)` 
+                      : 'linear-gradient(180deg, #0d1117 0%, #070a0f 100%)',
+                    boxShadow: isHovered 
+                      ? `0 12px 32px ${industry?.bg}, 0 4px 12px rgba(0,0,0,0.15)` 
+                      : '0 4px 12px rgba(0,0,0,0.15)',
+                    transition: 'all 0.4s cubic-bezier(0.625, 0.05, 0, 1)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '1rem',
+                    height: '100%',
                   }}
                 >
-                  {industry?.icon}
-                </div>
-
-                {/* Name */}
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-display), sans-serif',
-                    fontSize: '1.2rem',
-                    fontWeight: 600,
-                    color: '#ffffff',
-                    marginBottom: '0.5rem',
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {industry?.name}
-                </h3>
-
-                {/* Desc */}
-                <p
-                  style={{
-                    fontFamily: 'var(--font-body), sans-serif',
-                    fontSize: '0.86rem',
-                    color: hoveredId === industry?.id ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.5)',
-                    lineHeight: 1.65,
-                    marginBottom: '1.1rem',
-                    transition: 'color 0.3s ease-out',
-                  }}
-                >
-                  {industry?.desc}
-                </p>
-
-                <div className="flex items-center justify-start gap-3 mt-4">
+                  {/* Icon */}
                   <div
                     style={{
-                      display: 'inline-flex',
+                      width: '3.5rem',
+                      height: '3.5rem',
+                      borderRadius: '50%',
+                      display: 'flex',
                       alignItems: 'center',
-                      gap: '0.4rem',
-                      fontFamily: 'var(--font-body), sans-serif',
-                      fontSize: '0.72rem',
-                      fontWeight: 500,
-                      letterSpacing: '0.04em',
-                      color: hoveredId === industry?.id ? '#ffffff' : 'rgba(255,255,255,0.5)',
-                      padding: '0.35rem 0.8rem',
-                      border: `1px solid ${hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.08)'}`,
-                      borderRadius: '2rem',
-                      background: hoveredId === industry?.id ? industry?.bg : 'rgba(255,255,255,0.02)',
+                      justifyContent: 'center',
+                      color: isHovered ? industry?.color : 'rgba(255,255,255,0.6)',
+                      background: isHovered ? industry?.bg : 'rgba(255,255,255,0.02)',
+                      border: `1px solid ${isHovered ? industry?.border : 'rgba(255,255,255,0.06)'}`,
                       transition: 'all 0.3s ease-out',
+                      transform: isHovered ? 'scale(1.1) rotate(-5deg)' : 'scale(1)',
                     }}
                   >
-                    <span
-                      style={{
-                        width: '5px',
-                        height: '5px',
-                        borderRadius: '50%',
-                        background: hoveredId === industry?.id ? industry?.color : 'rgba(255,255,255,0.4)',
-                        transition: 'background 0.3s ease-out',
-                      }}
-                    />
-                    {industry?.focus}
+                    {industry?.icon}
                   </div>
+
+                  {/* Name */}
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-body), sans-serif',
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      color: isHovered ? '#ffffff' : 'rgba(255,255,255,0.7)',
+                      transition: 'color 0.3s ease',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {industry?.name}
+                  </span>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

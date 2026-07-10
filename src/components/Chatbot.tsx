@@ -13,7 +13,7 @@ const FLOW: Record<string, { text: string; options?: string[]; next?: string }> 
     text: "👋 Hi! I'm here to help you get started. What are you looking for?",
     options: [
       'Website Development',
-      'Mobile App Development',
+      'Custom Web Application',
       'WordPress Website',
       'Real Estate Website',
       'Ecommerce Store',

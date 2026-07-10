@@ -32,7 +32,7 @@ const services = [
   },
   {
     id: 2,
-    title: 'Mobile App Development',
+    title: 'Custom Web Apps',
     icon: (
       <svg
         width="18"
@@ -42,13 +42,16 @@ const services = [
         stroke="currentColor"
         strokeWidth="1.8"
       >
-        <rect x="5" y="2" width="14" height="20" rx="2" />
-        <line x1="12" y1="18" x2="12" y2="18.01" />
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+        <line x1="2" y1="8" x2="22" y2="8" />
+        <line x1="6" y1="6" x2="6" y2="6.01" />
+        <line x1="10" y1="6" x2="10" y2="6.01" />
+        <line x1="14" y1="6" x2="14" y2="6.01" />
       </svg>
     ),
-    desc: 'Scalable iOS and Android app experiences designed for retention, reliability, and long-term product growth.',
-    tags: ['Native + Cross Platform', 'Launch Sprints', 'Analytics Ready', 'Store Deployment'],
-    outcome: 'Higher retention and smoother product adoption',
+    desc: 'Bespoke SaaS platforms, custom portal development, and interactive web tools engineered for speed and security.',
+    tags: ['SaaS Architecture', 'Cloud Infrastructure', 'API Integrations', 'Interactive Tools'],
+    outcome: 'Bespoke platforms that drive business efficiency and growth',
     angle: 30,
   },
   {
