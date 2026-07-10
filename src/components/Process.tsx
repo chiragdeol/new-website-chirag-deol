@@ -149,7 +149,7 @@ export default function Process() {
     <section
       id="process"
       ref={sectionRef}
-      className="relative py-32 px-8 md:px-20 overflow-hidden"
+      className="relative py-16 px-8 md:px-20 overflow-hidden"
       style={{ background: '#fafaf9' }}
     >
       {/* Decorative */}

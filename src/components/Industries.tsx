@@ -212,7 +212,7 @@ export default function Industries() {
     <section
       id="industries"
       ref={sectionRef}
-      className="relative py-28 px-8 md:px-20 overflow-hidden md:py-36"
+      className="relative py-14 px-8 md:px-20 overflow-hidden md:py-18"
       style={{ background: '#04070a' }}
     >
       {/* Decorative orb */}

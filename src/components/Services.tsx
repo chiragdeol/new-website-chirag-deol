@@ -199,7 +199,7 @@ export default function Services({ onScrollTo }: ServicesProps) {
       className="relative overflow-x-hidden"
       style={{
         background: 'linear-gradient(160deg, #04070a 0%, #0a0f18 40%, #0d1117 100%)',
-        padding: 'clamp(4rem, 10vw, 8.5rem) 0',
+        padding: 'clamp(2rem, 5vw, 4rem) 0',
       }}
     >
       {/* Background orbs */}

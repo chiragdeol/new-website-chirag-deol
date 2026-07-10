@@ -50,7 +50,7 @@ export default function Stats() {
       className="relative overflow-hidden"
       style={{
         background: 'linear-gradient(160deg, #0a0f17 0%, #0d1520 55%, #111822 100%)',
-        padding: 'clamp(4rem, 8vw, 7rem) clamp(1rem, 4vw, 4rem)',
+        padding: 'clamp(2rem, 4vw, 3rem) clamp(1rem, 4vw, 4rem)',
       }}
     >
       {/* Ambient glows */}

@@ -150,7 +150,7 @@ export default function Portfolio() {
       className="relative overflow-hidden"
       style={{
         background: '#04070a',
-        padding: 'clamp(5rem, 11vw, 9.5rem) 0',
+        padding: 'clamp(2rem, 5vw, 4rem) 0',
       }}
     >
       {/* Background orbs */}
