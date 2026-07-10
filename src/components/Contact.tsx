@@ -107,7 +107,7 @@ export default function Contact() {
             <div className="section-label">Connect with us!</div>
             <h2
               className="display-heading mb-6"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', lineHeight: 1.0 }}
+              style={{ fontSize: 'clamp(34px, 3.4vw, 48px)', letterSpacing: '-0.03em', lineHeight: '1.0' }}
             >
               Turn Your Vision
               <br />

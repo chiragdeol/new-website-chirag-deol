@@ -88,7 +88,7 @@ export default function About({ onScrollTo }: AboutProps) {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <h2
               className="display-heading"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', maxWidth: '600px', color: '#ffffff' }}
+              style={{ fontSize: 'clamp(34px, 3.4vw, 48px)', letterSpacing: '-0.03em', lineHeight: '1.0', maxWidth: '600px', color: '#ffffff' }}
             >
               Built with Clarity.
               <br />
@@ -96,7 +96,7 @@ export default function About({ onScrollTo }: AboutProps) {
             </h2>
             <p
               className="body-text"
-              style={{ fontSize: '1rem', maxWidth: '360px', lineHeight: 1.7, color: 'rgba(252,252,253,0.5)' }}
+              style={{ fontSize: 'clamp(14px, 1.2vw, 17px)', lineHeight: '1.25', maxWidth: '360px', color: 'rgba(252,252,253,0.5)' }}
             >
               Beyond pretty interfaces, every deliverable is mapped to business outcomes: better
               engagement, stronger brand recall, and measurable conversions.

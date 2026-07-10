@@ -186,7 +186,7 @@ export default function Portfolio() {
             <div className="section-label">Case Studies</div>
             <h2
               className="display-heading text-white"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', lineHeight: 1.05 }}
+              style={{ fontSize: 'clamp(34px, 3.4vw, 48px)', letterSpacing: '-0.03em', lineHeight: '1.0' }}
             >
               Projects That
               <br />
@@ -195,7 +195,7 @@ export default function Portfolio() {
           </div>
           <p
             className="body-text"
-            style={{ fontSize: '1rem', maxWidth: '380px', lineHeight: 1.7, color: 'rgba(252,252,253,0.45)' }}
+            style={{ fontSize: 'clamp(14px, 1.2vw, 17px)', lineHeight: '1.25', maxWidth: '380px', color: 'rgba(252,252,253,0.45)' }}
           >
             A curated selection of our high-performing platforms engineered to deliver measurable customer growth and conversion lift.
           </p>
