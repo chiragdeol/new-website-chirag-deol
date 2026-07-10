@@ -10,7 +10,7 @@ export default function Stats() {
     { value: 500, suffix: '+',  label: 'Hours of\nDesign Work',    size: 310, top: '2%',  left: '28%', accent: false },
     { value: 4,   suffix: '',   label: 'Service\nAreas',           size: 200, top: '5%',  left: '62%', accent: false },
     { value: 60,  suffix: '+',  label: 'Happy\nClients',           size: 270, top: '44%', left: '12%', accent: false },
-    { value: 25,  suffix: '+',  label: 'Years of\nCombined Exp.',  size: 250, top: '38%', left: '46%', accent: true  },
+    { value: 6,   suffix: '+',  label: 'Years of\nExperience',     size: 250, top: '38%', left: '46%', accent: true  },
     { value: 98,  suffix: '%',  label: 'Client\nSatisfaction',     size: 210, top: '42%', left: '75%', accent: false },
   ];
 
