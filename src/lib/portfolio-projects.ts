@@ -144,4 +144,22 @@ export const portfolioProjects: PortfolioProject[] = [
     image: '/portfolio-15.png',
     alt: 'Industrial oil products website imagery',
   },
+  {
+    id: 16,
+    title: 'T&J Capital',
+    category: 'WEBSITE',
+    description: 'A premium private equity and wealth management website presenting investment strategies and corporate governance.',
+    url: 'https://tandjcapital.com/',
+    image: '/portfolio-16.png',
+    alt: 'Sleek corporate wealth management website layout',
+  },
+  {
+    id: 17,
+    title: 'Venduras',
+    category: 'E-COMMERCE',
+    description: 'A modern conversion-optimized Shopify storefront with customized product discovery flows.',
+    url: 'https://venduras.com/',
+    image: '/portfolio-17.png',
+    alt: 'Modern e-commerce landing catalog layout',
+  },
 ];

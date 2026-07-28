@@ -90,6 +90,36 @@ const featuredProjects: ProjectSpec[] = [
       { value: '500+', label: 'Syncs Daily' },
     ],
   },
+  {
+    id: 16,
+    title: 'T&J Capital',
+    category: 'WEBSITE',
+    description: 'A premium private equity and wealth management website presenting investment strategies and corporate governance.',
+    url: 'https://tandjcapital.com/',
+    image: '/portfolio-16.png',
+    themeColor: 'linear-gradient(135deg, #0b1d12 0%, #153c24 100%)',
+    borderColor: 'rgba(34, 197, 94, 0.25)',
+    stats: [
+      { value: 'SEC', label: 'Security Grade A+' },
+      { value: '1.4s', label: 'Page Load Speed' },
+      { value: '100%', label: 'Compliance Audits Passed' },
+    ],
+  },
+  {
+    id: 17,
+    title: 'Venduras',
+    category: 'E-COMMERCE',
+    description: 'A modern conversion-optimized Shopify storefront with customized product discovery flows.',
+    url: 'https://venduras.com/',
+    image: '/portfolio-17.png',
+    themeColor: 'linear-gradient(135deg, #1d1b0b 0%, #3e3a17 100%)',
+    borderColor: 'rgba(234, 179, 8, 0.25)',
+    stats: [
+      { value: '+45%', label: 'Mobile Conversion Rate' },
+      { value: '30%', label: 'Repeat Customer Rate' },
+      { value: '2.1s', label: 'Reduced Loading Speed' },
+    ],
+  },
 ];
 
 export default function Portfolio() {

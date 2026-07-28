@@ -133,7 +133,7 @@ export default function HomePage() {
         href="https://wa.me/919870903026"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 left-3 z-40 flex h-14 w-14 items-center justify-center rounded-full sm:bottom-8 sm:left-8"
+        className="fixed bottom-4 right-3 z-40 flex h-14 w-14 items-center justify-center rounded-full sm:bottom-8 sm:right-8"
         style={{
           background: '#25D366',
           boxShadow: '0 4px 20px rgba(37, 211, 102, 0.4)',

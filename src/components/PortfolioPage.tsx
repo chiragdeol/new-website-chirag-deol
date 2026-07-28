@@ -184,7 +184,7 @@ export default function PortfolioPage() {
         className="floating-whatsapp-portfolio"
         style={{
           position: 'fixed',
-          left: '0.75rem',
+          right: '0.75rem',
           bottom: '1rem',
           zIndex: 50,
           display: 'flex',
@@ -240,7 +240,7 @@ export default function PortfolioPage() {
         @media (min-width: 640px) {
           .floating-whatsapp-portfolio {
             bottom: 2rem !important;
-            left: 2rem !important;
+            right: 2rem !important;
           }
         }
 

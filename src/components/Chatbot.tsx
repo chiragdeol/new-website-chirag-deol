@@ -135,11 +135,11 @@ export default function Chatbot() {
       {/* Notification bubble */}
       {showBubble && !isOpen && (
         <div
-          className="fixed bottom-[7rem] right-3 z-50 sm:bottom-[7.5rem] sm:right-8"
+          className="fixed bottom-[7rem] left-3 z-50 sm:bottom-[7.5rem] sm:left-8"
           style={{
             background: '#111822',
             color: '#fff',
-            borderRadius: '1rem 1rem 0.25rem 1rem',
+            borderRadius: '1rem 1rem 1rem 0.25rem',
             padding: '0.75rem 1.1rem',
             fontFamily: 'var(--font-body), sans-serif',
             fontSize: '0.82rem',
@@ -177,7 +177,7 @@ export default function Chatbot() {
       {/* Chat Window */}
       {isOpen && (
         <div
-          className="fixed bottom-[6.75rem] right-3 z-50 max-h-[min(520px,calc(100dvh-8rem))] w-[min(calc(100vw-1.5rem),380px)] sm:bottom-[7rem] sm:right-8"
+          className="fixed bottom-[6.75rem] left-3 z-50 max-h-[min(520px,calc(100dvh-8rem))] w-[min(calc(100vw-1.5rem),380px)] sm:bottom-[7rem] sm:left-8"
           style={{
             height: 'min(520px, calc(100dvh - 8rem))',
             borderRadius: '1.5rem',
@@ -435,7 +435,7 @@ export default function Chatbot() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen((v) => !v)}
-        className="fixed bottom-4 right-3 z-50 sm:bottom-8 sm:right-8"
+        className="fixed bottom-4 left-3 z-50 sm:bottom-8 sm:left-8"
         style={{
           width: '56px',
           height: '56px',
